@@ -294,6 +294,7 @@ DEPENDENCIES
   font-awesome-sass
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  msgpack
   pg (~> 1.1)
   pry-byebug
   pry-rails
@@ -301,7 +302,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.1)
   redis (~> 4.0)
-  rubocop (~> 1.12)
+  rubocop
   rubocop-performance
   sass-rails (>= 6)
   selenium-webdriver
