@@ -50,6 +50,8 @@ jobs:
         run: |
           cp config/database.github.yml config/database.yml
           bundle exec rails db:create db:migrate
-      - run: bundle install
-      - name: Rubocop
+      - name: Rubocop Install
+        run: gem install rubocop
+      - name: Rubocop Lint
+        run: rubocop --format simple || true
         run: rubocop
