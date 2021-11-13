@@ -60,7 +60,7 @@ jobs:
           cp config/database.github.yml config/database.yml
           bundle exec rails db:create db:migrate
       - name: Rubocop Install
-        run: gem install rubocop
+        run: gem install rubocop 1.12
       - name: Rubocop Performance Install
         run: gem install rubocop-performance
       - name: Rubocop Lint
