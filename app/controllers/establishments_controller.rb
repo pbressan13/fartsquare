@@ -13,6 +13,7 @@ class EstablishmentsController < ApplicationController
 
   def create
     @establishment = Establishment.new(establishment_params)
+    @establishment.user = current_user
     # @establishment.available_at = parse_list
     if @establishment.save
       redirect_to establishment_path(@establishment)

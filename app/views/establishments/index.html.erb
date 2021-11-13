@@ -4,10 +4,8 @@
   <div class="card-deck cards my-3">
     <% @establishments.each do |establishment| %>
       <div class="card-product">
-        <img src= <%= Establishment::IMAGES[establishment.title] %> >
         <div class="card-product-infos">
-          <h2><%= link_to establishment.title, establishment_path(establishment), class: "a-primary" %></h2>
-          <p><%= establishment.description %></p>
+          <h2><%= link_to establishment.establishment_name, establishment_path(establishment), class: "a-primary" %></h2>
         </div>
       </div>
       <% end %>
