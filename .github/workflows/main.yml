@@ -54,4 +54,3 @@ jobs:
         run: gem install rubocop
       - name: Rubocop Lint
         run: rubocop --format simple || true
-        run: rubocop
