@@ -10,11 +10,6 @@
                 :collection => %w[AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO],
                 value_method: :strip %>
     <%= f.input :establishment_name, label: "Nome do Estabelecimento" %>
-    <%= f.input :available_at,
-                label: "Dias disponíveis:",
-                as: :check_boxes,
-                :collection => %w[Domingo Segunda Terça Quarta Quinta Sexta Sábado],
-                value_method: :strip %>
     <%= f.input :images, as: :file, :input_html => { :multiple => true }, label: "Fotos do seu estabelecimento:" %>
     <div class="row">
       <%= f.submit "Confirmar", class: "btn btn-primary" %>
