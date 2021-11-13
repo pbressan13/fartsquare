@@ -51,4 +51,5 @@ jobs:
           cp config/database.github.yml config/database.yml
           bundle exec rails db:create db:migrate
       - name: Rubocop
-        run: rubocop --format simple
+        uses: andrewmcodes-archive/rubocop-linter-action@v3.3.0
+
