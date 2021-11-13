@@ -1,4 +1,4 @@
 class Establishment < ApplicationRecord
-  belongs_to :user_id
+  belongs_to :user
   has_many_attached :images
 end
