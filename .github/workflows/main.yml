@@ -52,4 +52,6 @@ jobs:
           bundle exec rails db:create db:migrate
       - name: Rubocop
         uses: andrewmcodes-archive/rubocop-linter-action@v3.3.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
