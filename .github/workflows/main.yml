@@ -1,12 +1,15 @@
 name: Ruby
 
 on:
-  [push]
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: andrewmcodes-archive/rubocop-linter-action@v3.3.0
+      - uses: actions/checkout@v2
       - name: Set up Ruby
         uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
         with:
@@ -17,6 +20,3 @@ jobs:
         run: bundle exec rake              
       - name: Rubocop
         run: rubocop --format simple
-
-
-
