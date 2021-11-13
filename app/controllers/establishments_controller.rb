@@ -4,11 +4,12 @@ class EstablishmentsController < ApplicationController
   end
 
   def index
-    @establishments = Establishment.all
+    @establishments = policy_scope(Establishment).order(created_at: :desc)
   end
 
   def new
     @establishment = Establishment.new
+    authorize @establishment
   end
 
   def create
