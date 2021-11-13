@@ -50,8 +50,6 @@ jobs:
         run: |
           cp config/database.github.yml config/database.yml
           bundle exec rails db:create db:migrate
+      - run: bundle install
       - name: Rubocop
-        uses: andrewmcodes-archive/rubocop-linter-action@v3.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+        run: rubocop
