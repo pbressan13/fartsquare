@@ -1,0 +1,19 @@
+<div class="container my-5">
+  <h2><strong>Estabelecimentos</strong></h2>
+
+  <div class="card-deck cards my-3">
+    <% @establishments.each do |establishment| %>
+      <div class="card-product">
+        <img src= <%= Establishment::IMAGES[establishment.title] %> >
+        <div class="card-product-infos">
+          <h2><%= link_to establishment.title, establishment_path(establishment), class: "a-primary" %></h2>
+          <p><%= establishment.description %></p>
+        </div>
+      </div>
+      <% end %>
+  </div>
+
+  <% if @establishments.count = 0 %>
+    <%= link_to 'Novo Estabelecimento', new_establishment_path(@establishment), class: "btn btn-primary mx-2 my-5" %>
+  <% end %>
+</div>
