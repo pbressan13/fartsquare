@@ -1,13 +1,19 @@
 <div class="container my-5">
   <h2><strong>Estabelecimentos</strong></h2>
-
   <div class="card-deck cards my-3">
     <% @establishments.each do |establishment| %>
-      <div class="card-product">
-        <div class="card-product-infos">
-          <h2><%= link_to establishment.establishment_name, establishment_path(establishment), class: "a-primary" %></h2>
+      <% if policy(establishment).show? %>
+        <div class="card-product">
+          <div class="card-product-infos">
+            <h2>
+              <%= link_to establishment.establishment_name, establishment_path(establishment), class: "a-primary" %>
+            </h2>
+          <% end %>
         </div>
       </div>
-      <% end %>
+    <% end %>
+
+      <%= link_to "Novo Estabelecimento" , new_establishment_path %>
+
   </div>
 </div>

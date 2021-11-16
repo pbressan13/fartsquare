@@ -36,14 +36,19 @@ gem 'google_places', '~> 2.0'
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
+gem 'msgpack'
+gem 'geocoder'
+gem 'pundit'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  gem 'htmlbeautifier'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'rubocop'
+  gem 'rubocop', require: false
   gem 'rubocop-performance'
 end
 
