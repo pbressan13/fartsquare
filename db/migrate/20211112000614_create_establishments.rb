@@ -11,7 +11,6 @@ class CreateEstablishments < ActiveRecord::Migration[6.1]
       t.string :federal_unity
       t.string :establishment_name
       t.string :available_at
-
       t.timestamps
     end
   end
