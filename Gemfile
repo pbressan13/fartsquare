@@ -32,6 +32,7 @@ gem 'devise'
 gem 'cloudinary', '~> 1.16.0'
 gem 'csv', '~> 3.2', '>= 3.2.1'
 gem 'google_places', '~> 2.0'
+gem 'chronic', '~> 0.10.2'
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
