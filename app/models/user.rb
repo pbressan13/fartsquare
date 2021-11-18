@@ -4,4 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one_attached :avatar
+  geocoded_by :street_address
+  after_validation :geocode #, if: :will_save_change_to_street_address?
 end
