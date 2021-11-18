@@ -38,12 +38,13 @@ def service_intervals(places)
       availability << oh["weekday_text"]
     end
   end
+  return availability
 end
 
-def location(places)
-  city = []
-  federal_unity = []
+city = []
+federal_unity = []
 
+def location(places)
   address_components = places.map { |place| place.json_result_object['address_components'] }
 
   address_components.each do |component|
@@ -53,7 +54,7 @@ def location(places)
       elsif c['types'].include?('administrative_area_level_2')
         city << c['long_name']
       else
-        'Error'
+        'Place does not have administrative levels 1 and 2.'
       end
     end
   end
@@ -78,7 +79,7 @@ location(places) # city e federal_unity
 # ['Monday: 6:00 AM – 10:00 PM',
 #  'Tuesday: 6:00 AM – 10:00 PM',
 #  'Wednesday: 6:00 AM – 10:00 PM',
-#  'Thursday: 6:00 AM – 10:00 PM',
+#  'Thursday: 9:30 AM – 10:00 PM',
 #  'Friday: 6:00 AM – 10:00 PM',
 #  'Saturday: 6:00 AM – 10:00 PM',
 #  'Sunday: 6:00 AM – 10:00 PM']
