@@ -82,6 +82,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     childprocess (4.1.0)
+    chronic (0.10.2)
     cloudinary (1.16.1)
       aws_cf_signer
       rest-client
@@ -299,6 +300,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  chronic (~> 0.10.2)
   cloudinary (~> 1.16.0)
   csv (~> 3.2, >= 3.2.1)
   devise

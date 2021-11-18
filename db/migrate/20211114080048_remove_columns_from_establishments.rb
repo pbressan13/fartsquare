@@ -5,5 +5,6 @@ class RemoveColumnsFromEstablishments < ActiveRecord::Migration[6.1]
     remove_column :establishments, :zipcode, :string
     remove_column :establishments, :street_addon, :string
     remove_column :establishments, :neighborhood, :string
+    remove_column :establishments, :available_at, :string
   end
 end
