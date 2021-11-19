@@ -5,18 +5,24 @@ const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
   if (mapElement) { // only build a map if there's a div#map to inject into
+    var geolocate = new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true
+    });
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/mapbox/streets-v10',
+      center: [-23.5517186, -46.6892309], // starting position
+      zoom: 3 // starting zoom
     });
-  }
-  const markers = JSON.parse(mapElement.dataset.markers);
-  markers.forEach((marker) => {
-    new mapboxgl.Marker()
-      .setLngLat([marker.lng, marker.lat])
-      .addTo(map);
-  });
-};
+    map.addControl(geolocate);
+      map.on('load', function () {
+        geolocate.trigger(); //<- Automatically activates geolocation
+      });
+    }
+}
 
 export { initMapbox };
