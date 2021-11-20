@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_233955) do
     t.string "city"
     t.string "federal_unity"
     t.string "name"
+    t.string "available_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "full_address"
