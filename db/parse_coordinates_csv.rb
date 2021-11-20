@@ -1,6 +1,6 @@
 require 'csv'
 
-def gather_coordinates(file_path)
+def gather_coordinates(file_path, number_points, shuffle = true)
   header = %i[lng lat]
   csv_options = { col_sep: ',', headers: header }
 
@@ -12,5 +12,11 @@ def gather_coordinates(file_path)
 
   coordinates.each { |h| h.each_pair { |k, v| h[k] = v.to_f } }
 
-  return coordinates
+  if shuffle == true
+    coordinates.shuffle!
+  else
+    coordinates
+  end
+
+  return coordinates.first(number_points)
 end

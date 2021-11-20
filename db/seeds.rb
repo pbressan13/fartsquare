@@ -5,60 +5,37 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require_relative 'db/parse_coordinates_csv'
+Establishment.destroy_all
+User.destroy_all
+
+25.times do
+  User.create(
+    email: Faker::Internet.email,
+    password: Faker::Internet.password,
+    name: Faker::Name.name
+  )
+end
+
+require_relative 'parse_coordinates_csv'
 
 file_path = 'db/SP_COORDINATES_SEED_ESTABLISHMENT.csv'
 
-coordinates = gather_coordinates(file_path)
+coordinates = gather_coordinates(file_path, 5)
 
 @client = GooglePlaces::Client.new(ENV['PLACES_API'])
 
 places = []
 
-coordinates.first(1).each do |coordinate|
+coordinates.each do |coordinate|
   places << @client.spots(
     coordinate[:lat], coordinate[:lng],
     types: ['food', 'gas_station'],
-    radius: 60_000,
+    radius: 100_000,
     detail: true
   )
 end
 
 places.flatten!
-
-def service_intervals(places)
-  opening_hours = places.map { |place| place['opening_hours'] }
-
-  availability = []
-
-  opening_hours.each do |oh|
-    if oh.nil?
-      availability << nil
-    else
-      availability << oh["weekday_text"]
-    end
-  end
-  return availability
-end
-
-city = []
-federal_unity = []
-
-def location(places)
-  address_components = places.map { |place| place.json_result_object['address_components'] }
-
-  address_components.each do |component|
-    component.each do |c|
-      if c['types'].include?('administrative_area_level_1')
-        federal_unity << c['short_name']
-      elsif c['types'].include?('administrative_area_level_2')
-        city << c['long_name']
-      else
-        'Place does not have administrative levels 1 and 2.'
-      end
-    end
-  end
-end
 
 name = places.map(&:name)
 lat = places.map(&:lat)
@@ -67,9 +44,74 @@ full_address = places.map(&:formatted_address)
 phone_number = places.map(&:formatted_phone_number)
 google_id = places.map(&:place_id)
 business_status = places.map { |place| place.json_result_object['business_status'] }
+photo_link = places.map { |place| place.photos.first.fetch_url(800) unless place.photos.first.nil? }
+address_components = places.map { |place| place.json_result_object['address_components'] }
 
-service_intervals(places) # availability
-location(places) # city e federal_unity
+def get_service_intervals(places)
+  availability = []
+
+  opening_hours = places.map { |place| place['opening_hours'] }
+
+  opening_hours.each do |oh|
+    if oh.nil?
+      availability << nil
+    else
+      availability << oh["weekday_text"]
+    end
+  end
+  availability
+end
+
+def get_federal_unity(address_components)
+  federal_unity = []
+
+  if address_components.nil?
+    federal_unity << nil
+  else
+    address_components.each do |type|
+      type.each do |c|
+        federal_unity << c['short_name'] if c['types'].include?('administrative_area_level_1')
+      end
+    end
+  end
+  return federal_unity
+end
+
+def get_city(address_components)
+  city = []
+
+  if address_components.nil?
+    city << nil
+  else
+    address_components.each do |type|
+      type.each do |c|
+        city << c['long_name'] if c['types'].include?('administrative_area_level_2')
+      end
+    end
+  end
+  return city
+end
+
+availability = get_service_intervals(places) # availability
+federal_unity = get_federal_unity(address_components) # federal_unity
+city = get_city(address_components) # city
+
+20.times do |i|
+  Establishment.create!(
+    user_id: User.all.sample.id,
+    city: city[i],
+    federal_unity: federal_unity[i],
+    name: name[i],
+    full_address: full_address[i],
+    phone_number: phone_number[i].nil? ? "" : phone_number[i],
+    lat: lat[i],
+    lng: lng[i],
+    google_id: google_id[i],
+    business_status: business_status[i],
+    photo_link: photo_link[i].nil? ? "" : photo_link[i],
+    availability: availability[i].nil? ? [] : availability[i]
+  )
+end
 
 # Ideia para a sequencia:
 # places.flatten para ter o conjunto completo de locais
