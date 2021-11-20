@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_233955) do
     t.string "city"
     t.string "federal_unity"
     t.string "name"
+    t.string "available_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "full_address"
@@ -55,8 +56,6 @@ ActiveRecord::Schema.define(version: 2021_11_16_233955) do
     t.decimal "lat"
     t.decimal "lng"
     t.string "google_id"
-    t.jsonb "availability", default: "{}"
-    t.string "business_status"
     t.index ["user_id"], name: "index_establishments_on_user_id"
   end
 
