@@ -28,11 +28,12 @@ gem 'redis', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
-gem 'devise'
+gem 'chronic', '~> 0.10.2'
 gem 'cloudinary', '~> 1.16.0'
 gem 'csv', '~> 3.2', '>= 3.2.1'
+gem 'devise'
+gem 'faker'
 gem 'google_places', '~> 2.0'
-gem 'chronic', '~> 0.10.2'
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
@@ -46,7 +47,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'dotenv-rails'
   gem 'htmlbeautifier'
-  gem 'faker'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
