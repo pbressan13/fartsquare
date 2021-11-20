@@ -16,7 +16,7 @@ User.destroy_all
   )
 end
 
-require_relative 'parse_coordinates_csv'
+require_relative 'db/parse_coordinates_csv'
 
 file_path = 'db/SP_COORDINATES_SEED_ESTABLISHMENT.csv'
 
