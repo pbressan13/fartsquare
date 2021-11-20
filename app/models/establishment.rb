@@ -10,7 +10,7 @@ class Establishment < ApplicationRecord
   def fetch_today_times
     today_times = nil
 
-    self.availability.each do |date|
+    availability.each do |date|
       today_times = date if date.include?(Time.now.strftime("%A"))
     end
 
@@ -20,14 +20,11 @@ class Establishment < ApplicationRecord
   def open?
     today_times = fetch_today_times
 
-    if today_times.blank? || today_times.include?("Closed")
-      return false
-    elsif today_times.include?("24 hours")
-      return true
-    else
-      opening = Chronic.parse("this #{parse_date(today_times).first}")
-      closing = Chronic.parse("this #{parse_date(today_times).last}")
-      return Time.now > opening && Time.now < closing
-    end
+    return false if today_times.blank? || today_times.include?("Closed")
+    return true if today_times.include?("24 hours")
+
+    opening = Chronic.parse("this #{parse_date(today_times).first}")
+    closing = Chronic.parse("this #{parse_date(today_times).last}")
+    return Time.now > opening && Time.now < closing
   end
 end

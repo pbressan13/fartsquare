@@ -53,12 +53,9 @@ ActiveRecord::Schema.define(version: 2021_11_16_233955) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "full_address"
     t.string "phone_number"
-    t.float "lat"
-    t.float "lng"
+    t.decimal "lat"
+    t.decimal "lng"
     t.string "google_id"
-    t.string "business_status"
-    t.string "photo_link"
-    t.jsonb "availability", default: "{}"
     t.index ["user_id"], name: "index_establishments_on_user_id"
   end
 

@@ -1,6 +1,16 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
-
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+<%= simple_form_for :search, url: root_path, method: :get do |f| %>
+  <div class="input-group" class="search-group">
+    <input type="text"
+           class="form-control string required"
+           id="search_query"
+           placeholder="Para onde precisa ir?">
+    <div class="input-group-append">
+      <button class="btn btn-secondary" type="button" id="button-search">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+<% end %>
+<div id="map" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
