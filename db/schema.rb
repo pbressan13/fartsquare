@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_233955) do
+ActiveRecord::Schema.define(version: 2021_11_24_004131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,12 +43,22 @@ ActiveRecord::Schema.define(version: 2021_11_16_233955) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "bathrooms", force: :cascade do |t|
+    t.bigint "establishment_id", null: false
+    t.boolean "tomada"
+    t.boolean "papel_premium"
+    t.boolean "chuveirinho"
+    t.boolean "internet"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["establishment_id"], name: "index_bathrooms_on_establishment_id"
+  end
+
   create_table "establishments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "city"
     t.string "federal_unity"
     t.string "name"
-    t.string "available_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "full_address"
@@ -59,6 +69,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_233955) do
     t.string "business_status"
     t.string "photo_link"
     t.jsonb "availability", default: "{}"
+    t.jsonb "types", default: "{}"
     t.index ["user_id"], name: "index_establishments_on_user_id"
   end
 
@@ -92,5 +103,6 @@ ActiveRecord::Schema.define(version: 2021_11_16_233955) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bathrooms", "establishments"
   add_foreign_key "establishments", "users"
 end
