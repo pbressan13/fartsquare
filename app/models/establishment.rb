@@ -2,6 +2,7 @@ class Establishment < ApplicationRecord
   belongs_to :user
   has_many_attached :images
   serialize :availability
+  searchkick
 
   def parse_date(string_date)
     string_date.split(": ")[1].split(" –")
