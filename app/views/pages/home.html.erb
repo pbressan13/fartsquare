@@ -13,4 +13,7 @@
     </div>
   </div>
 <% end %>
-<div id="map" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+<div id="outerdiv">
+  <div id="map" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>

@@ -40,3 +40,5 @@ yarn-debug.log*
 *.swp
 .DS_Store
 .env*
+elasticsearch-7.15.2-amd64.deb
+Gemfile.lock
