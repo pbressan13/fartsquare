@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Bathroom.destroy_all
 Establishment.destroy_all
 User.destroy_all
 
@@ -29,7 +30,7 @@ places = []
 coordinates.each do |coordinate|
   places << @client.spots(
     coordinate[:lat], coordinate[:lng],
-    types: ['food', 'gas_station'],
+    types: %w[restaurant gas_station convenience_store],
     radius: 100_000,
     detail: true
   )
@@ -43,6 +44,7 @@ lng = places.map(&:lng)
 full_address = places.map(&:formatted_address)
 phone_number = places.map(&:formatted_phone_number)
 google_id = places.map(&:place_id)
+types = places.map(&:types)
 business_status = places.map { |place| place.json_result_object['business_status'] }
 photo_link = places.map { |place| place.photos.first.fetch_url(800) unless place.photos.first.nil? }
 address_components = places.map { |place| place.json_result_object['address_components'] }
@@ -56,7 +58,7 @@ def get_service_intervals(places)
     if oh.nil?
       availability << nil
     else
-      availability << oh["weekday_text"]
+      availability << oh['weekday_text']
     end
   end
   availability
@@ -96,27 +98,39 @@ availability = get_service_intervals(places) # availability
 federal_unity = get_federal_unity(address_components) # federal_unity
 city = get_city(address_components) # city
 
-20.times do |i|
+# binding.pry
+
+places.count.times do |i|
   Establishment.create!(
     user_id: User.all.sample.id,
     city: city[i],
     federal_unity: federal_unity[i],
-    name: name[i],
-    full_address: full_address[i],
-    phone_number: phone_number[i].nil? ? "" : phone_number[i],
+    name: name[i].nil? ? '' : name[i],
+    full_address: full_address[i].nil? ? '' : full_address[i],
+    phone_number: phone_number[i].nil? ? '' : phone_number[i],
     lat: lat[i],
     lng: lng[i],
     google_id: google_id[i],
-    business_status: business_status[i],
-    photo_link: photo_link[i].nil? ? "" : photo_link[i],
-    availability: availability[i].nil? ? [] : availability[i]
+    business_status: business_status[i].nil? ? '' : business_status[i],
+    photo_link: photo_link[i].nil? ? '' : photo_link[i],
+    availability: availability[i].nil? ? [] : availability[i],
+    types: types[i].nil? ? [] : types[i]
   )
 end
 
-# Ideia para a sequencia:
-# places.flatten para ter o conjunto completo de locais
-# para pegar fotos de um local específico:
-# places.first.photos[0].fetch_url(800)
+def t_or_f
+  [true, false].sample(1).pop
+end
+
+Establishment.count.times do
+  Bathroom.create!(
+    establishment_id: Establishment.first.id + 1,
+    tomada: t_or_f,
+    internet: t_or_f,
+    papel_premium: t_or_f,
+    chuveirinho: t_or_f
+  )
+end
 
 # ['Monday: 6:00 AM – 10:00 PM',
 #  'Tuesday: 6:00 AM – 10:00 PM',
