@@ -24,25 +24,26 @@ class Establishment < ApplicationRecord
     today_times = fetch_today_times
     return false if today_times.blank? || today_times.include?("Closed")
     return true if today_times.include?("24 hours")
+    
     opening = Chronic.parse("this #{parse_date(today_times).first}")
     closing = Chronic.parse("this #{parse_date(today_times).last}")
     return Time.now > opening && Time.now < closing
   end
 
   def restaurant?
-    self.types.each do |type|
+    types.each do |type|
       return true if type.include?('restaurant')
     end
   end
 
   def convenience_store?
-    self.types.each do |type|
+    types.each do |type|
       return true if type.include?('convenience_store')
     end
   end
 
   def gas_station?
-    self.types.each do |type|
+    types.each do |type|
       return true if type.include?('gas_station')
     end
   end
