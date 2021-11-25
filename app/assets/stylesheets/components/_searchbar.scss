@@ -1,0 +1,39 @@
+#search_query {
+  border-radius: 20px;
+  line-height: 18px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 3.5rem;
+}
+
+.input_group {
+  border-radius: 20px;
+  line-height: 18px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 3.5rem;
+
+}
+
+#button-search {
+  border-radius: 2px;
+}
+
+.form-control {
+    padding-left: 2.375rem;
+      padding-bottom: 10px;
+}
+
+.form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}

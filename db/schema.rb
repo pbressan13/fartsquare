@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 2021_11_24_004131) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "full_address"
     t.string "phone_number"
-    t.float "lat"
-    t.float "lng"
+    t.decimal "lat"
+    t.decimal "lng"
     t.string "google_id"
     t.string "business_status"
     t.string "photo_link"

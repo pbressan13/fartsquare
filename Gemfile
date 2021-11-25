@@ -32,6 +32,8 @@ gem 'chronic', '~> 0.10.2'
 gem 'cloudinary', '~> 1.16.0'
 gem 'csv', '~> 3.2', '>= 3.2.1'
 gem 'devise'
+gem 'elasticsearch', "< 7.14" # to use a supported version of the Elasticsearch Ruby client
+gem 'searchkick', '~> 4.0'
 gem 'faker'
 gem 'google_places', '~> 2.0'
 
