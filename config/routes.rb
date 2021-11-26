@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'map' => "establishments#map"
   resources :establishments
   devise_for :users
   root to: 'pages#home'

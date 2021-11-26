@@ -49,6 +49,35 @@ class EstablishmentsController < ApplicationController
   #  days_in_list.strip.gsub(" ", ", ")
   # end
 
+    def map
+    @establishments = Establishment.all
+    @geojson = []
+
+    @establishments.each do |establishment|
+      @geojson << {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [establishment.lng, establishment.lat]
+        },
+        properties: {
+          title: establishment.name,
+          address: establishment.full_address,
+          image: establishment.photo_link,
+          id: establishment.id,
+          'marker-color': '#00607d',
+          'marker-symbol': 'circle',
+          'marker-size': 'medium'
+        }
+      }
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @geojson }  # respond with the created JSON object
+    end
+  end
+
   private
 
   def find_establishment
