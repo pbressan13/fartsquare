@@ -16,20 +16,24 @@
                   label: "Confirme sua senha",
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
-      <%= f.input :avatar, as: :file,
-                      required: true %>
       <%= f.input :birthdate,
                   label: "Data de nascimento",
-                  required: true,
-                  input_html: { autocomplete: "birthdate" }%>
+                  as: :string,
+                  input_html: {type: :date},
+                  required: true %>
       <%= f.input :street_address,
                   label: "Endereço completo",
                   required: true,
                   input_html: { autocomplete: "address" }%>
+      <%= f.input :avatar,
+                  label: "Foto do perfil",
+                  as: :file,
+                  required: true %>
     </div>
     <div class="form-actions">
-      <%= f.button :submit, "Sign up", class: "btn-ghost" %>
+      <%= f.button :submit, "Cadastrar", class: "btn-ghost" %>
     </div>
   <% end %>
+  <br>
   <%= render "devise/shared/links" %>
 </div>

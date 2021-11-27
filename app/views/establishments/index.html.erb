@@ -1,19 +1,34 @@
-<div class="container my-5">
+<div class="container my-3">
   <h2><strong>Estabelecimentos</strong></h2>
-  <div class="card-deck cards my-3">
+  <div class="card">
     <% @establishments.each do |establishment| %>
-      <% if policy(establishment).show? %>
-        <div class="card-product">
-          <div class="card-product-infos">
-            <h2>
-              <%= link_to establishment.establishment_name, establishment_path(establishment), class: "a-primary" %>
-            </h2>
-          <% end %>
+      <div class="card_left">
+        <img src= <%= establishment.photo_link %> >
+      </div>
+      <div class="card_right">
+        <%= establishment.name %>
+        <div class="card_right__details">
+          <ul>
+            <li>
+              <% if establishment.open? %>
+                <img src="https://img.icons8.com/fluency/48/000000/open-sign.png"/>
+              <% else %>
+                <img src="https://img.icons8.com/fluency/48/000000/closed-sign.png"/>
+              <% end %>
+            </li>
+            <li><%= establishment.bathroom.tomada %></li>
+            <li><%= establishment.bathroom.internet %></li>
+            <li><%= establishment.bathroom.chuveirinho %></li>
+            <li><%= establishment.bathroom.papel_premium %></li>
+          </ul>
+          <div class="card_right__review">
+            <%= establishment.full_address %>
+          </div>
+          <div class="card_right__button">
+            <%= link_to 'Dirigir até o local' %>
+          </div>
         </div>
       </div>
-    <% end %>
-
-      <%= link_to "Novo Estabelecimento" , new_establishment_path %>
     <% end %>
   </div>
 </div>
