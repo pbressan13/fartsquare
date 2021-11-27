@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <h2>Editar <%= resource_name.to_s.humanize %></h2>
+  <h2>Editar meu cadastro</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
@@ -12,13 +12,16 @@
       <% end %>
 
       <%= f.input :password,
+                  label: "Senha",
                   hint: "deixe em branco se não quiser alterar",
                   required: false,
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :password_confirmation,
+                  label: "Repita sua senha",
                   required: false,
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :current_password,
+                  label: "Senha atual",
                   hint: "precisamos da sua senha atual para confirmar suas alterações",
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
@@ -29,9 +32,10 @@
     </div>
   <% end %>
 
+  <br>
   <h3>Cancelar minha conta</h3>
 
-  <p>Infeliz com o nosso serviço? <%= link_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete %></p>
+  <p>Infeliz com o nosso serviço? <%= link_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete, class: "btn-ghost"  %></p>
 
-  <%= link_to "Voltar", :back %>
+  <%= link_to "Voltar", :back, class: "btn-ghost"  %>
 </div>
