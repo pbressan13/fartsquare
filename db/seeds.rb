@@ -21,7 +21,7 @@ require_relative 'parse_coordinates_csv'
 
 file_path = 'db/SP_COORDINATES_SEED_ESTABLISHMENT.csv'
 
-coordinates = gather_coordinates(file_path, 5)
+coordinates = gather_coordinates(file_path, 5, false)
 
 @client = GooglePlaces::Client.new(ENV['PLACES_API'])
 
@@ -31,7 +31,7 @@ coordinates.each do |coordinate|
   places << @client.spots(
     coordinate[:lat], coordinate[:lng],
     types: %w[restaurant gas_station convenience_store],
-    radius: 100_000,
+    radius: 10_000,
     detail: true
   )
 end
@@ -97,8 +97,6 @@ end
 availability = get_service_intervals(places) # availability
 federal_unity = get_federal_unity(address_components) # federal_unity
 city = get_city(address_components) # city
-
-# binding.pry
 
 places.count.times do |i|
   Establishment.create!(
