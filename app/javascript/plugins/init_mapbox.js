@@ -1,6 +1,5 @@
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-//const key = "pk.eyJ1IjoicGJyZXNzYW4xMyIsImEiOiJja3RubjY3aDYwNGg4MzJwM2ZpZnZ2M2xxIn0.6EHrmyT6a1-6T2CtvEI7Mg";
 const key = process.env.MAPBOX_API_KEY
 
 
