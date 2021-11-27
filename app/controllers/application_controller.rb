@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
                                       keys: %i[name role street_address birthdate admin zipcode latitude longitude
                                                avatar])
   end
-  # include Pundit
+  include Pundit
 
   # Pundit: white-list approach.
   # after_action :verify_authorized, except: [:index, :map], unless: :skip_pundit?

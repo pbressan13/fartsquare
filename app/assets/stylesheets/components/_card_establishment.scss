@@ -1,0 +1,115 @@
+.card-establishment {
+  overflow: hidden;
+  height: 300px;
+  background: #4e1f00;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 10px 15px 3px rgba(0, 0, 0, 0.45);
+  // -webkit-border-radius: 0 10px 10px 0;
+  // -moz-border-radius: 0 10px 10px 0;
+}
+
+.card-establishment .card-establishment-infos {
+  padding: 16px;
+}
+
+.card-establishment img {
+  height: 100%;
+  width: 300px;
+  object-fit: cover;
+  border-radius: 10px 0 0 10px;
+}
+
+.card-establishment-right-name {
+  margin: 0px 20px 5px;
+  display: inline-block;
+}
+
+.card-establishment-right h2 {
+  font-family: "Post No Bills Jaffna", sans-serif;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+.card-establishment-right ul {
+  list-style-type: none;
+  padding: 0 0 0 0px;
+  margin: 5px 20px;
+  display: inline-block;
+}
+
+.card-establishment-right li {
+  display: inline;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 0 10px 0 10px;
+}
+
+.card-establishment-right-location {
+  margin: 20px 0px;
+  color: white;
+  opacity: 1;
+}
+
+.card-establishment-right-location p {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  padding: 0 0px 0 0px;
+  letter-spacing: 1px;
+  margin: 0px 20px 5px;
+  display: inline-block;
+  line-height: 20px;
+}
+
+.card-establishment-right-location a {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  padding: 0 0 0 40px;
+  color: white;
+  margin: 0px;
+  opacity: 1;
+}
+
+.card-establishment-right-button {
+  padding: 0 0 0 0px;
+  margin: 5px 20px 0px;
+  display: inline-block;
+}
+
+.card-establishment-right-button a {
+  color: #ffda00;
+  font-family: "Post No Bills Jaffna", sans-serif;
+  border: 2px solid #ffda00;
+  padding: 10px 10px 10px 40px;
+  font-size: 16px;
+  background: url("waze.png");
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-position: 7% 50%;
+  border-radius: 5px;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+.card-establishment-right-button a:hover {
+  color: #000000;
+  background-color: #ffda00;
+  background-image: url("waze.png");
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-position: 10% 50%;
+  cursor: pointer;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
