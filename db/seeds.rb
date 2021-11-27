@@ -9,6 +9,8 @@ Bathroom.destroy_all
 Establishment.destroy_all
 User.destroy_all
 
+Establishment.reindex
+
 25.times do
   User.create(
     email: Faker::Internet.email,
