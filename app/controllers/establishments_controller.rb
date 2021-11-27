@@ -1,5 +1,6 @@
 class EstablishmentsController < ApplicationController
   before_action :find_establishment, only: %i[show edit update destroy]
+
   def show
   end
 

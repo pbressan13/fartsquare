@@ -41,8 +41,8 @@ end
 places.flatten!
 
 name = places.map(&:name)
-latitude = places.map(&:latitude)
-longitude = places.map(&:longitude)
+latitude = places.map(&:lat)
+longitude = places.map(&:lng)
 full_address = places.map(&:formatted_address)
 phone_number = places.map(&:formatted_phone_number)
 google_id = places.map(&:place_id)
@@ -100,8 +100,12 @@ availability = get_service_intervals(places) # availability
 federal_unity = get_federal_unity(address_components) # federal_unity
 city = get_city(address_components) # city
 
+def t_or_f
+  [true, false].sample(1).pop
+end
+
 places.count.times do |i|
-  Establishment.create!(
+  establishment = Establishment.new(
     user_id: User.all.sample.id,
     city: city[i],
     federal_unity: federal_unity[i],
@@ -116,21 +120,28 @@ places.count.times do |i|
     availability: availability[i].nil? ? [] : availability[i],
     types: types[i].nil? ? [] : types[i]
   )
-end
-
-def t_or_f
-  [true, false].sample(1).pop
-end
-
-Establishment.count.times do
-  Bathroom.create!(
-    establishment_id: Establishment.first.id + 1,
+  bathroom = Bathroom.new(
     tomada: t_or_f,
     internet: t_or_f,
     papel_premium: t_or_f,
     chuveirinho: t_or_f
   )
+  establishment.bathroom = bathroom
+  bathroom.establishment = establishment
+
+  establishment.save!
+  bathroom.save!
 end
+
+# Establishment.count.times do
+#   Bathroom.create!(
+#     establishment_id: Establishment.first.id + 1,
+#     tomada: t_or_f,
+#     internet: t_or_f,
+#     papel_premium: t_or_f,
+#     chuveirinho: t_or_f
+#   )
+# end
 
 # ['Monday: 6:00 AM – 10:00 PM',
 #  'Tuesday: 6:00 AM – 10:00 PM',
