@@ -5,7 +5,7 @@ const buildMap = (mapElement) => {
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
   return new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v10'
+    style: 'mapbox://styles/mapbox/light-v10',
   });
 };
 
@@ -37,14 +37,22 @@ const initMapbox = () => {
     const map = buildMap(mapElement);
     map.addControl(geolocate);
     const markers = JSON.parse(mapElement.dataset.markers);
-    addMarkersToMap(map, markers);
+    //addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
     map.on('load', function () {
       geolocate.trigger(); //<- Automatically activates geolocation
       const markers = JSON.parse(mapElement.dataset.markers);
       markers.forEach((marker) => {
-        new mapboxgl.Marker()
+        const el = document.createElement('div');
+        el.className = 'marker';
+        new mapboxgl.Marker(el)
           .setLngLat([marker.longitude, marker.latitude])
+          .setPopup(
+            new mapboxgl.Popup({ offset: 25 }) // add popups
+              .setHTML(
+                `<h3>${marker.name}</h3><p>${marker.full_address}</p>`
+              )
+          )
           .addTo(map);
       });
 
