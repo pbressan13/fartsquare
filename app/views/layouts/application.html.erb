@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Fartsquare</title>
+    <title>FartSquare</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= stylesheet_pack_tag 'application' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= favicon_link_tag 'poop.png' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" />
@@ -19,7 +19,7 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-
     <%= yield %>
+    <%= render 'shared/footer' %>
   </body>
 </html>
