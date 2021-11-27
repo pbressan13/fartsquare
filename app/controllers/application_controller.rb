@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-  #include Pundit
+  include Pundit
 
   # Pundit: white-list approach.
   #after_action :verify_authorized, except: [:index, :map], unless: :skip_pundit?
@@ -11,6 +11,13 @@ class ApplicationController < ActionController::Base
   # def user_not_authorized
   #   flash[:alert] = "You are not authorized to perform this action."
   #   redirect_to(root_path)
+  # end
+  # def configure_permitted_parameters
+  #   # For additional fields in app/views/devise/registrations/new.html.erb
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: %i[email birthdate street_address avatar])
+
+  #   # For additional in app/views/devise/registrations/edit.html.erb
+  #   devise_parameter_sanitizer.permit(:account_update, keys: %i[email birthdate street_address avatar])
   # end
 
   private
