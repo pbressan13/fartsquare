@@ -1,5 +1,10 @@
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+//const key = "pk.eyJ1IjoicGJyZXNzYW4xMyIsImEiOiJja3RubjY3aDYwNGg4MzJwM2ZpZnZ2M2xxIn0.6EHrmyT6a1-6T2CtvEI7Mg";
+const key = process.env.MAPBOX_API_KEY
+
+
+
 
 const buildMap = (mapElement) => {
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
@@ -9,13 +14,20 @@ const buildMap = (mapElement) => {
   });
 };
 
+//const addMarkersToMap = (map, markers) => {
+//  markers.forEach((marker) => {
+//    new mapboxgl.Marker()
+//      .setLngLat([marker.longitude, marker.latitude])
+//      .addTo(map);
+//  });
+//};
+
 const addMarkersToMap = (map, markers) => {
-  markers.forEach((marker) => {
     new mapboxgl.Marker()
-      .setLngLat([marker.longitude, marker.latitude])
+      .setLngLat([markers[0], markers[1]])
       .addTo(map);
-  });
 };
+
 
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
@@ -57,7 +69,35 @@ const initMapbox = () => {
       });
 
     });
+
+    const searchMap = (event) => {
+      event.preventDefault();
+      const address = document.getElementById("search_query").value;
+      const baseUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${key}`;
+      console.log(baseUrl);
+      console.log(address);
+      fetch(`${baseUrl}`)
+        .then(response => response.json())
+        .then((data) => {
+          console.log(data.features[0].center);
+          const latlong = data.features[0].center;
+          new mapboxgl.Marker()
+            .setLngLat([latlong[0], latlong[1]])
+            .setPopup(
+              new mapboxgl.Popup({ offset: 25 }) // add popups
+                .setHTML(
+                  `<h3>${address}</h3>`
+                )
+            )
+            .addTo(map);
+          //addMarkersToMap(map, latlong);
+        })
+      };
+    const searchButton = document.getElementById("searchbtn");
+    searchButton.addEventListener("click", searchMap);
   }
 }
+
+//searchButton.addEventListener("click", searchMap);
 
 export { initMapbox };
