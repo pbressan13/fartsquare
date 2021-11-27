@@ -1,7 +1,7 @@
 require 'csv'
 
 def gather_coordinates(file_path, number_points, shuffle = true)
-  header = %i[lng lat]
+  header = %i[longitude latitude]
   csv_options = { col_sep: ',', headers: header }
 
   coordinates = []

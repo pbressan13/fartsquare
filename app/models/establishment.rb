@@ -5,6 +5,8 @@ class Establishment < ApplicationRecord
   serialize :availability
   searchkick
   serialize :types
+  geocoded_by :street_address
+  #after_validation :geocode, if: :will_save_change_to_address?
 
   def parse_date(string_date)
     string_date.split(': ')[1].split(' –')
