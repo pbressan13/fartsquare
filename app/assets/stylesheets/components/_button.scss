@@ -13,6 +13,21 @@
   color: #5C2601 ;
 }
 
+.btn-ghost-mirror {
+  color: #5C2601;
+  background-color: #fff;
+  border: 1px solid #4e1f00;
+  padding: 8px 24px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background 0.3s ease
+}
+
+.btn-ghost-mirror:hover {
+  background-color: transparent;
+  color: #fff ;
+}
+
 .btn-panic {
   color: #fff;
   background-color: red;
