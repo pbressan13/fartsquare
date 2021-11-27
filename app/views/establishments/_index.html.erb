@@ -2,15 +2,15 @@
   <h2><strong>Estabelecimentos</strong></h2>
   <div class="cards">
     <% @establishments.each do |establishment| %>
-      <div class="card-establishment">
-        <img src= <%= establishment.photo_link %> >
-        <div class="card-establishment-right">
-          <div class="card-establishment-right-name">
-            <h2>
-              <%= establishment.name %>
-            </h2>
-          </div>
-          <div class="card-establishment-right-list">
+      <div class="card my-1">
+        <div class="card_left">
+          <img src= <%= establishment.photo_link %> >
+        </div>
+        <div class="card_right">
+          <h2>
+          <%= establishment.name %>
+          </h2>
+          <div class="card_right__details">
             <ul>
               <li>
                 <% if establishment.open? %>
@@ -48,12 +48,12 @@
                 <% end %>
               </li>
             </ul>
-          </div>
-          <div class="card-establishment-right-location">
-            <p><i class="fas fa-map-marker-alt"></i> </i><%= establishment.city %>/<%= establishment.federal_unity %><p>
-          </div>
-          <div class="card-establishment-right-button">
-            <%= link_to 'Dirigir até o local' %>
+            <div class="card_right-location">
+              <p><i class="fas fa-map-marker-alt"></i> </i><%= establishment.city %>/<%= establishment.federal_unity %><p>
+            </div>
+            <div class="card_right-button">
+              <%= link_to 'Dirigir até o local' %>
+            </div>
           </div>
         </div>
       </div>
