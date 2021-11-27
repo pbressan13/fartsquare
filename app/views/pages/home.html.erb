@@ -1,20 +1,23 @@
 <div class="container my-5">
-<%= simple_form_for :search, url: root_path, method: :get do |f| %>
-  <div class="input-group" class="search-group">
-    <input type="text"
-      class="form-control string required"
-      id="search_query"
-      placeholder="Digite local para encontrar banheiros próximos">
-    <div class="input-group-append">
-      <div class="p-2">
-        <button name="button" type="submit" class="btn btn-ghost">
-          <i class="fas fa-search"></i> Buscar
-        </button>
+  <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+    <div class="input-group justify-content-between align-items-center" class="search-group">
+      <input type="text"
+        class="form-control string required"
+        id="search_query"
+        placeholder="Digite local para encontrar banheiros próximos">
+      <div class="input-group-append">
+        <div class="p-2">
+          <button name="button" type="submit" class="btn btn-ghost">
+            <i class="fas fa-search"></i> Buscar
+          </button>
+          <button name="button" type="submit" class="btn btn-panic">
+            P Â N I C O &#128561;
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<% end %>
+  <% end %>
 
 <div id="outerdiv">
   <div id="map" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
