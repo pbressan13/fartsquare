@@ -49,7 +49,7 @@ class EstablishmentsController < ApplicationController
   #  days_in_list.strip.gsub(" ", ", ")
   # end
 
-    def map
+  def map
     @establishments = Establishment.all
     @geojson = []
 
@@ -58,7 +58,7 @@ class EstablishmentsController < ApplicationController
         type: 'Feature',
         geometry: {
           type: 'Point',
-          coordinates: [establishment.lng, establishment.lat]
+          coordinates: [establishment.longitude, establishment.latitude]
         },
         properties: {
           title: establishment.name,

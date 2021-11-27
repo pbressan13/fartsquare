@@ -31,7 +31,7 @@ places = []
 
 coordinates.each do |coordinate|
   places << @client.spots(
-    coordinate[:lat], coordinate[:lng],
+    coordinate[:latitude], coordinate[:longitude],
     types: %w[restaurant gas_station convenience_store],
     radius: 10_000,
     detail: true
@@ -41,8 +41,8 @@ end
 places.flatten!
 
 name = places.map(&:name)
-lat = places.map(&:lat)
-lng = places.map(&:lng)
+latitude = places.map(&:latitude)
+longitude = places.map(&:longitude)
 full_address = places.map(&:formatted_address)
 phone_number = places.map(&:formatted_phone_number)
 google_id = places.map(&:place_id)
@@ -108,8 +108,8 @@ places.count.times do |i|
     name: name[i].nil? ? '' : name[i],
     full_address: full_address[i].nil? ? '' : full_address[i],
     phone_number: phone_number[i].nil? ? '' : phone_number[i],
-    lat: lat[i],
-    lng: lng[i],
+    latitude: latitude[i],
+    longitude: longitude[i],
     google_id: google_id[i],
     business_status: business_status[i].nil? ? '' : business_status[i],
     photo_link: photo_link[i].nil? ? '' : photo_link[i],
