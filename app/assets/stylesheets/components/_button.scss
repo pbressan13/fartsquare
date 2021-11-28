@@ -31,12 +31,15 @@
 .btn-panic {
   color: #fff;
   background-color: red;
+  text-shadow: 0 1px 20px #000000;
+  box-shadow: 1px 1px 20px 0 #000000;
   border: 1px solid black;
-  height: 120px;
-  width: 120px;
+  height: 110px;
+  width: 110px;
   padding: 8px 8px;
-  border-radius: 5px;
+  border-radius: 50%;
   font-weight: 800;
+  margin: 0px 0px;
   transition: background 0.3s ease;
 }
 
