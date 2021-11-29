@@ -1,6 +1,6 @@
 .card-establishment {
   overflow: hidden;
-  height: 300px;
+  height: 250px;
   background: #4e1f00;
   border-radius: 10px;
   display: flex;
@@ -47,12 +47,12 @@
   color: white;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   padding: 0 10px 0 10px;
 }
 
 .card-establishment-right-location {
-  margin: 20px 0px;
+  margin: 10px 0px 20px 0px;
   color: white;
   opacity: 1;
 }
@@ -75,41 +75,4 @@
   color: white;
   margin: 0px;
   opacity: 1;
-}
-
-.card-establishment-right-button {
-  padding: 0 0 0 0px;
-  margin: 5px 20px 0px;
-  display: inline-block;
-}
-
-.card-establishment-right-button a {
-  color: #ffda00;
-  font-family: "Post No Bills Jaffna", sans-serif;
-  border: 2px solid #ffda00;
-  padding: 10px 10px 10px 40px;
-  font-size: 16px;
-  background: url("waze.png");
-  background-size: 12px 12px;
-  background-repeat: no-repeat;
-  background-position: 7% 50%;
-  border-radius: 5px;
-  -webkit-transition-property: all;
-  transition-property: all;
-  -webkit-transition-duration: 0.5s;
-  transition-duration: 0.5s;
-}
-
-.card-establishment-right-button a:hover {
-  color: #000000;
-  background-color: #ffda00;
-  background-image: url("waze.png");
-  background-size: 12px 12px;
-  background-repeat: no-repeat;
-  background-position: 10% 50%;
-  cursor: pointer;
-  -webkit-transition-property: all;
-  transition-property: all;
-  -webkit-transition-duration: 0.5s;
-  transition-duration: 0.5s;
 }
