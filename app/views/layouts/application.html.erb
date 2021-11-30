@@ -20,6 +20,8 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <%#= render 'shared/footer' %>
+    <% if current_user %>
+      <%= render 'shared/panic_button' %>
+    <% end %>
   </body>
 </html>

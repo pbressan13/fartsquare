@@ -1,6 +1,7 @@
 .card-establishment {
   overflow: hidden;
   height: 250px;
+  width: 500px;
   background: #4e1f00;
   border-radius: 10px;
   display: flex;
@@ -16,7 +17,7 @@
 
 .card-establishment img {
   height: 100%;
-  width: 300px;
+  width: 225px;
   object-fit: cover;
   border-radius: 10px 0 0 10px;
 }
