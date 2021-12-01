@@ -1,21 +1,3 @@
-<div class="container my-3">
-  <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-    <div class="input-group justify-content-between align-items-center" class="search-group">
-      <input type="text"
-        class="form-control string required"
-        id="search_query"
-        placeholder="Digite local para encontrar banheiros próximos">
-      <div class="input-group-append">
-        <div class="p-2">
-          <button name="button" id="searchbtn" type="submit" class="btn btn-ghost">
-            <i class="fas fa-search"></i> Buscar
-          </button>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
-
 <div id="outerdiv">
   <div id="map"
     data-markers="<%= @markers.to_json %>"

@@ -70,8 +70,6 @@ ActiveRecord::Schema.define(version: 2021_11_29_000015) do
     t.string "photo_link"
     t.jsonb "availability", default: "{}"
     t.jsonb "types", default: "{}"
-    t.boolean "avaliable_now?"
-    t.boolean "available_now?"
     t.boolean "available_now"
     t.index ["user_id"], name: "index_establishments_on_user_id"
   end

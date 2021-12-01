@@ -53,35 +53,6 @@ class EstablishmentsController < ApplicationController
     redirect_to establishments_path
   end
 
-  def map
-    @establishments = Establishment.all
-    @geojson = []
-
-    @establishments.each do |establishment|
-      @geojson << {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [establishment.longitude, establishment.latitude]
-        },
-        properties: {
-          title: establishment.name,
-          address: establishment.full_address,
-          image: establishment.photo_link,
-          id: establishment.id,
-          'marker-color': '#00607d',
-          'marker-symbol': 'circle',
-          'marker-size': 'medium'
-        }
-      }
-    end
-
-    respond_to do |format|
-      format.html
-      format.json { render json: @geojson }  # respond with the created JSON object
-    end
-  end
-
   private
 
   def find_establishment
@@ -90,14 +61,8 @@ class EstablishmentsController < ApplicationController
 
   def establishment_params
     params.require(:establishment).permit(
-      :street_address,
-      :street_number,
-      :zipcode,
-      :street_addon,
-      :neighborhood,
-      :city,
-      :federal_unity,
-      :establishment_name,
+      :full_address, :street_number, :zipcode, :street_addon,
+      :neighborhood, :city, :federal_unity, :establishment_name,
       images: []
     )
   end
