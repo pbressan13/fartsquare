@@ -1,9 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 const key = process.env.MAPBOX_API_KEY
-
-
-
 
 const buildMap = (mapElement) => {
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
@@ -13,20 +11,27 @@ const buildMap = (mapElement) => {
   });
 };
 
-//const addMarkersToMap = (map, markers) => {
-//  markers.forEach((marker) => {
-//    new mapboxgl.Marker()
-//      .setLngLat([marker.longitude, marker.latitude])
-//      .addTo(map);
-//  });
-//};
-
 const addMarkersToMap = (map, markers) => {
-    new mapboxgl.Marker()
-      .setLngLat([markers[0], markers[1]])
-      .addTo(map);
-};
+  markers.forEach((marker) => {
+    const popup = new mapboxgl.Popup()
+      .setHTML(`<h3>${marker.name}</h3><p>${marker.full_address}</p><p><img src="${marker.image_url}" alt="Photo from ${marker.name}" width="100%" height="100%"></img></p>'`);
 
+    // Create a HTML element for your custom marker
+    const element = document.createElement('div');
+    element.className = 'marker';
+    element.style.backgroundSize = 'contain';
+    element.style.width = '25px';
+    element.style.height = '25px';
+
+    // Pass the element as an argument to the new marker
+    new mapboxgl.Marker(element)
+      .setLngLat([marker.longitude, marker.latitude])
+      .setPopup(popup)
+      .addTo(map);
+  });
+
+
+};
 
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
@@ -48,55 +53,16 @@ const initMapbox = () => {
     const map = buildMap(mapElement);
     map.addControl(geolocate);
     const markers = JSON.parse(mapElement.dataset.markers);
-    //addMarkersToMap(map, markers);
+    addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
+    map.addControl(new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      mapboxgl: mapboxgl
+    }));
     map.on('load', function () {
       geolocate.trigger(); //<- Automatically activates geolocation
-      const markers = JSON.parse(mapElement.dataset.markers);
-      markers.forEach((marker) => {
-        const el = document.createElement('div');
-        el.className = 'marker';
-        new mapboxgl.Marker(el)
-          .setLngLat([marker.longitude, marker.latitude])
-          .setPopup(
-            new mapboxgl.Popup({ offset: 25 }) // add popups
-              .setHTML(
-                `<h3>${marker.name}</h3><p>${marker.full_address}</p>`
-              )
-          )
-          .addTo(map);
-      });
-
     });
-
-    const searchMap = (event) => {
-      event.preventDefault();
-      const address = document.getElementById("search_query").value;
-      const baseUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${key}`;
-      console.log(baseUrl);
-      console.log(address);
-      fetch(`${baseUrl}`)
-        .then(response => response.json())
-        .then((data) => {
-          console.log(data.features[0].center);
-          const latlong = data.features[0].center;
-          new mapboxgl.Marker()
-            .setLngLat([latlong[0], latlong[1]])
-            .setPopup(
-              new mapboxgl.Popup({ offset: 25 }) // add popups
-                .setHTML(
-                  `<h3>${address}</h3>`
-                )
-            )
-            .addTo(map);
-          //addMarkersToMap(map, latlong);
-        })
-      };
-    const searchButton = document.getElementById("searchbtn");
-    searchButton.addEventListener("click", searchMap);
   }
 }
-
-//searchButton.addEventListener("click", searchMap);
 
 export { initMapbox };

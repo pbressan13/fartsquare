@@ -2,6 +2,7 @@
   "name": "fartsquare",
   "private": true,
   "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^4.7.4",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
@@ -9,8 +10,10 @@
     "bootstrap": "4.6",
     "bootstrap-sass": "^3.3.7",
     "jquery": "^3.6.0",
-    "mapbox-gl": "^2.6.0",
+    "mapbox-gl": "^2.6.1",
+    "places.js": "^1.19.0",
     "popper.js": "^1.16.1",
+    "serve": "^13.0.2",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
