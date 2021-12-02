@@ -49,6 +49,11 @@
   transition: background 0.3s ease;
 }
 
+.btn-panic:hover {
+  color: #000000;
+  transform: perspective(5px) scale3d(1.1, 1.1, 1);
+}
+
 .a-primary{
   color: #5C2601
 }
@@ -103,7 +108,7 @@ a.fb {
   padding: 10px 10px 10px 40px;
   font-size: 16px;
   background: url("waze.png");
-  background-size: 12px 12px;
+  background-size: 14px 14px;
   background-repeat: no-repeat;
   background-position: 7% 50%;
   border-radius: 5px;
@@ -117,9 +122,9 @@ a.fb {
   color: #000000;
   background-color: #ffda00;
   background-image: url("waze.png");
-  background-size: 12px 12px;
+  background-size: 14px 14px;
   background-repeat: no-repeat;
-  background-position: 10% 50%;
+  background-position: 15% 50%;
   cursor: pointer;
   -webkit-transition-property: all;
   transition-property: all;
