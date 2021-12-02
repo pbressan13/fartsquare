@@ -4,8 +4,25 @@ class EstablishmentsController < ApplicationController
   def show
   end
 
+  def filtered_establishments
+    if params[:filter].nil?
+      policy_scope(Establishment).where(business_status: "OPERATIONAL")
+    else
+      parameters = params.require(:filter).permit(:tomada, :internet, :chuveirinho, :papel_premium).to_h.symbolize_keys
+      parameters.transform_values! { |v| ActiveModel::Type::Boolean.new.cast(v) }
+      if parameters.select! { |_k, v| v } == {}
+        policy_scope(Establishment).where(business_status: "OPERATIONAL")
+      else
+        policy_scope(Establishment).joins(:bathroom).where(
+          business_status: "OPERATIONAL",
+          bathroom: parameters
+        )
+      end
+    end
+  end
+
   def index
-    @establishments = policy_scope(Establishment).where(business_status: "OPERATIONAL")
+    @establishments = filtered_establishments
 
     @establishments.map do |establishment|
       if establishment.open?

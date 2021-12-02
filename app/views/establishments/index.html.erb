@@ -1,5 +1,8 @@
 <div class="container my-3">
   <h2><strong>Estabelecimentos</strong></h2>
+  <div class="container my-3">
+    <%= render "establishments/filter" %>
+  </div>
   <div class="cards">
     <% @establishments.each do |establishment| %>
       <div class="card-establishment">

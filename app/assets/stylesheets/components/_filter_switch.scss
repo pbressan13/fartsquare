@@ -1,0 +1,29 @@
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.custom-control-input:focus~.custom-control-label::before {
+  border-color: #5C2601;
+  box-shadow: 0 0 0 0.2rem rgba(255, 47, 69, 0.25);
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+  border-color: #5C2601;
+  background-color: #5C2601;
+}
+
+.custom-control-input:active~.custom-control-label::before {
+  background-color: #5C2601;
+  border-color: #5C2601;
+}
+
+.custom-control-input:focus:not(:checked)~.custom-control-label::before {
+  border-color: #5C2601;
+}
+
+.custom-control-input-green:not(:disabled):active~.custom-control-label::before {
+  background-color: #5C2601;
+  border-color: #5C2601;
+}
