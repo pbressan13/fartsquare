@@ -1,1 +1,37 @@
 // Specific CSS for your home-page
+.btn-waze {
+  padding: 0 0 0 0px;
+  margin: 5px 20px 0px;
+  display: inline-block;
+}
+
+.btn-waze a {
+  color: #4e1f00;
+  font-family: "Post No Bills Jaffna", sans-serif;
+  border: 2px solid #4e1f00;
+  padding: 10px 10px 10px 40px;
+  font-size: 16px;
+  background: url("waze.png");
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-position: 7% 50%;
+  border-radius: 5px;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+.btn-waze:hover {
+  color: #000000;
+  background-color: #4e1f00;
+  background-image: url("waze.png");
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-position: 15% 50%;
+  cursor: pointer;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}

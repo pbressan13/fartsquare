@@ -30,20 +30,16 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <style>
-        .flash__alert   { color: red; }
-        .flash__notice  { color: blue; }
-        .flash__success { color: green; }
+      .flash__alert   { color: red; }
+      .flash__notice  { color: blue; }
+      .flash__success { color: green; }
     </style>
     <script src="//cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/js/emojify.min.js"></script>
   </head>
 
   <body>
-    <% if flash.any? %>
-      <% flash.each do |key, value| -%>
-        <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
-      <% end -%>
-    <% end %>
-    <%#= render 'shared/navbar' %>
+    <%= tag :div, id: "current-user-coordinates", data: {long: current_user.longitude, lat: current_user.latitude } %>
+    <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
     <% if current_user %>
