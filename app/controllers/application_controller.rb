@@ -6,12 +6,12 @@ class ApplicationController < ActionController::Base
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up,
                                       keys: %i[name role street_address birthdate admin zipcode latitude longitude
-                                               avatar])
+                                               avatar social_sec_no])
 
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update,
                                       keys: %i[name role street_address birthdate admin zipcode latitude longitude
-                                               avatar])
+                                               avatar ])
   end
   include Pundit
 
