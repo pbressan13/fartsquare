@@ -410,8 +410,8 @@ DEPENDENCIES
   sass-rails (>= 6)
   searchkick (~> 4.0)
   selenium-webdriver
-  sidekiq
-  sidekiq-failures (~> 1.0)
+  sidekiq (~> 6.3, >= 6.3.1)
+  sidekiq-failures (~> 1.0, >= 1.0.1)
   simple_form
   spring
   turbolinks (~> 5)
