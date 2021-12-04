@@ -1,6 +1,6 @@
-<div class="container my-3">
+<div class="container">
   <h2><strong>Estabelecimentos</strong></h2>
-  <div class="container my-3">
+  <div class="container">
     <%= render "establishments/filter" %>
   </div>
   <div class="cards">
@@ -58,15 +58,19 @@
           </div>
           <div class="card-establishment-right-location">
             <p>
-              <i class="fas fa-map-marker-alt"></i>
+              <i class="fas fa-map-marker-alt" title="Município/UF"></i>
               <%= establishment.city %>/<%= establishment.federal_unity %>
               -
-              <i class="fas fa-road"></i>
-              XX km
-              <p>
+              <i class="fas fa-stopwatch" title="Duração estimada da viagem"></i>
+              <% if establishment.trip_duration < 24*60*60 %>
+                <%= Time.at(establishment.trip_duration).utc.strftime("%H:%M") %>
+              <% else %>
+                ---
+              <% end %>
+            <p>
           </div>
           <div class="card-establishment-right-button">
-            <%= link_to 'Dirigir até o local' %>
+            <%= link_to 'Dirigir até o local', "https://waze.com/ul?directions?navigate=yes&to=ll.#{establishment.latitude}%2C#{establishment.longitude}&from=ll.#{current_user.latitude}%2C#{current_user.longitude}" %>
           </div>
         </div>
       </div>

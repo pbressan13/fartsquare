@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   geocoded_by :street_address
   after_validation :geocode # , if: :will_save_change_to_street_address?
+
   validates :name, :email, presence: true, allow_blank: false
   validates :email, format: { with: Devise.email_regexp }
 

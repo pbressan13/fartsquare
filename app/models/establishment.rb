@@ -8,7 +8,7 @@ class Establishment < ApplicationRecord
   geocoded_by :street_address
   # after_validation :geocode, if: :will_save_change_to_address?
 
-  validates :name, uniqueness: { scope: :full_address }
+  validates :name, presence: true
 
   def fetch_today_times
     today_times = nil
