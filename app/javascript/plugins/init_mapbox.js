@@ -12,9 +12,29 @@ const buildMap = (mapElement) => {
 };
 
 const addMarkersToMap = (map, markers) => {
+  const tag_coords = document.getElementById("current-user-coordinates")
+  const lat = tag_coords.dataset.lat
+  const long = tag_coords.dataset.long
+
   markers.forEach((marker) => {
-    const popup = new mapboxgl.Popup()
-      .setHTML(`<h3>${marker.name}</h3><p>${marker.full_address}</p><p><img src="${marker.image_url}" alt="Photo from ${marker.name}" width="100%" height="100%"></img></p>'`);
+    const popup = new mapboxgl.Popup().setHTML(`
+      <h3>${marker.name}</h3>
+        <p>${marker.full_address}</p>
+        <p>
+          <img
+            src="${marker.image_url}"
+            alt="Photo from ${marker.name}"
+            width="100%"
+            height="100%"
+          >
+          </img>
+        </p>
+        <a
+          href="https://waze.com/ul?directions?navigate=yes&to=ll.${marker.latitude}%2C${marker.longitude}&from=ll.${lat}%2C${long}"
+          class="btn-waze">
+          Dirigir até o local
+        </a>
+    `);
 
     // Create a HTML element for your custom marker
     const element = document.createElement('div');
@@ -51,6 +71,7 @@ const initMapbox = () => {
     const map = buildMap(mapElement);
     map.addControl(geolocate);
     const markers = JSON.parse(mapElement.dataset.markers);
+
     geolocate.on('geolocate', function (e) {
       const long = e.coords.longitude;
       const lat = e.coords.latitude
@@ -60,14 +81,16 @@ const initMapbox = () => {
         type: "POST",
         data: { data_coordinates: position }
       });
-      // console.log(position);
     });
+
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
+
     map.addControl(new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl
     }));
+
     map.on('load', function () {
       geolocate.trigger(); //<- Automatically activates geolocation
     });

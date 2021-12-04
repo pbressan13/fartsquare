@@ -1,3 +1,7 @@
-<button name="panic" type="submit" class="btn btn-panic">
-  P Â N I C O &#128561;
-</button>
+<% establishment = Establishment.order('trip_duration asc').first %>
+
+<%= link_to "https://waze.com/ul?directions?navigate=yes&to=ll.#{establishment.latitude}%2C#{establishment.longitude}&from=ll.#{current_user.latitude}%2C#{current_user.longitude}", class: "btn btn-panic d-flex align-items-center" do %>
+  <div>
+    P Â N I C O &#128561;
+  </div>
+<% end %>
