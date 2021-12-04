@@ -29,8 +29,6 @@ const addMarkersToMap = (map, markers) => {
       .setPopup(popup)
       .addTo(map);
   });
-
-
 };
 
 const fitMapToMarkers = (map, markers) => {
@@ -53,6 +51,17 @@ const initMapbox = () => {
     const map = buildMap(mapElement);
     map.addControl(geolocate);
     const markers = JSON.parse(mapElement.dataset.markers);
+    geolocate.on('geolocate', function (e) {
+      const long = e.coords.longitude;
+      const lat = e.coords.latitude
+      const position = [long, lat];
+      $.ajax({
+        url: "/fetch_position",
+        type: "POST",
+        data: { data_coordinates: position }
+      });
+      // console.log(position);
+    });
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
     map.addControl(new MapboxGeocoder({

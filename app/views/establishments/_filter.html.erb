@@ -1,50 +1,29 @@
 <%= simple_form_for :filter, url: establishments_path, method: :get do |f| %>
-    <div class="flex-container">
-      <h5>Filtrar por conveniência:</h5>
-      <div class="custom-control custom-switch">
-        <%= f.check_box :tomada, options = {class: "custom-control-input", id: "tomada", checked: params[:filter] ? params[:filter][:tomada] == "1" : false, onchange: 'this.form.submit();'}, checked_value = "1", unchecked_value = "0" %>
-        <label class="custom-control-label" for="tomada">
-          <i class="fas fa-plug" style="color:#5C2601" title="Tomada"></i>
-        </label>
-      </div>
-      <div class="custom-control custom-switch">
-        <%= f.check_box :internet, options = {class: "custom-control-input", id: "internet", checked: params[:filter] ? params[:filter][:internet] == "1" : false, onchange: 'this.form.submit();'}, checked_value = "1", unchecked_value = "0" %>
-        <label class="custom-control-label" for="internet">
-          <i class="fas fa-wifi" style="color:#5C2601" title="Wi-Fi"></i>
-        </label>
-      </div>
-      <div class="custom-control custom-switch">
-        <%= f.check_box :chuveirinho, options = {class: "custom-control-input", id: "chuveirinho", checked: params[:filter] ? params[:filter][:chuveirinho] == "1" : false, onchange: 'this.form.submit();'}, checked_value = "1", unchecked_value = "0" %>
-        <label class="custom-control-label" for="chuveirinho">
-          <i class="fas fa-shower" style="color:#5C2601" title="Ducha higiênica"></i>
-        </label>
-      </div>
-      <div class="custom-control custom-switch">
-        <%= f.check_box :papel_premium, options = {class: "custom-control-input", id: "papel_premium", checked: params[:filter] ? params[:filter][:papel_premium] == "1" : false, onchange: 'this.form.submit();'}, checked_value = "1", unchecked_value = "0" %>
-        <label class="custom-control-label" for="papel_premium">
-          <i class="fas fa-toilet-paper" style="color:#5C2601" title="Papel premium"></i>
-        </label>
-      </div>
+  <div class="flex-container">
+    <h5>Conveniência:</h5>
+    <div class="custom-control custom-switch">
+      <%= f.check_box :tomada, options = {class: "custom-control-input", id: "tomada", checked: params[:filter] ? params[:filter][:tomada] == "1" : false, onchange: 'this.form.submit();'}, checked_value = "1", unchecked_value = "0" %>
+      <label class="custom-control-label" for="tomada">
+        <i class="fas fa-plug" style="color:#5C2601" title="Tomada"></i>
+      </label>
     </div>
-    <div class="flex-container">
-      <h5>Filtrar por tipo de estabelecimento:</h5>
-      <div class="custom-control custom-switch">
-        <%= f.check_box :restaurant, class: "custom-control-input", id: "restaurant" %>
-        <label class="custom-control-label" for="restaurant">
-          <i class="fas fa-utensils" style="color:#5C2601" title="Restaurante"></i>
-        </label>
-      </div>
-      <div class="custom-control custom-switch">
-        <%= f.check_box :convenience_store, class: "custom-control-input", id: "convenience_store" %>
-        <label class="custom-control-label" for="convenience_store">
-          <i class="fas fa-store" style="color:#5C2601" title="Loja de conveniência"></i>
-        </label>
-      </div>
-      <div class="custom-control custom-switch">
-        <%= f.check_box :gas_station, class: "custom-control-input", id: "gas_station" %>
-        <label class="custom-control-label" for="gas_station">
-          <i class="fas fa-gas-pump" style="color:#5C2601" title="Posto de combustível"></i>
-        </label>
-      </div>
+    <div class="custom-control custom-switch">
+      <%= f.check_box :internet, options = {class: "custom-control-input", id: "internet", checked: params[:filter] ? params[:filter][:internet] == "1" : false, onchange: 'this.form.submit();'}, checked_value = "1", unchecked_value = "0" %>
+      <label class="custom-control-label" for="internet">
+        <i class="fas fa-wifi" style="color:#5C2601" title="Wi-Fi"></i>
+      </label>
     </div>
+    <div class="custom-control custom-switch">
+      <%= f.check_box :chuveirinho, options = {class: "custom-control-input", id: "chuveirinho", checked: params[:filter] ? params[:filter][:chuveirinho] == "1" : false, onchange: 'this.form.submit();'}, checked_value = "1", unchecked_value = "0" %>
+      <label class="custom-control-label" for="chuveirinho">
+        <i class="fas fa-shower" style="color:#5C2601" title="Ducha higiênica"></i>
+      </label>
+    </div>
+    <div class="custom-control custom-switch">
+      <%= f.check_box :papel_premium, options = {class: "custom-control-input", id: "papel_premium", checked: params[:filter] ? params[:filter][:papel_premium] == "1" : false, onchange: 'this.form.submit();'}, checked_value = "1", unchecked_value = "0" %>
+      <label class="custom-control-label" for="papel_premium">
+        <i class="fas fa-toilet-paper" style="color:#5C2601" title="Papel premium"></i>
+      </label>
+    </div>
+  </div>
 <% end %>
