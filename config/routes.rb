@@ -1,3 +1,5 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   get 'map' => "establishments#map"
   resources :establishments
@@ -6,4 +8,8 @@ Rails.application.routes.draw do
   get 'pages/search', to: 'pages#search'
   post 'fetch_position', to: 'establishments#fetch_position'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # Sidekiq Web UI, only for admins.
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end

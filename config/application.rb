@@ -18,7 +18,7 @@ module Fartsquare
     # config.i18n.default_locale = :'pt-BR'
     config.encoding = "utf-8"
     config.load_defaults 6.1
-
+    config.active_job.queue_adapter = :sidekiq
 
     # Configuration for the application, engines, and railties goes here.
     #

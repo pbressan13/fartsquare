@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
+  after_action :populate_db, only: [:home]
 
   def home
     @establishments = Establishment.all
@@ -12,5 +13,15 @@ class PagesController < ApplicationController
         image_url: helpers.asset_url(establishment.photo_link || "vaso.png")
       }
     end
+  end
+
+  def populate_db
+    UpdateEstablishmentJob.perform_async(current_user)
+  end
+
+  def fetch_position
+    current_user.longitude = params[:data_coordinates].first.to_f
+    current_user.latitude = params[:data_coordinates].second.to_f
+    current_user.save!
   end
 end
