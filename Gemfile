@@ -43,6 +43,9 @@ gem 'simple_form'
 gem 'msgpack'
 gem 'geocoder'
 gem 'pundit'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
 
 group :development, :test do
   gem 'pry-byebug'

@@ -1,5 +1,7 @@
 <div class="container my-5">
   <h2>Criar nova conta</h2>
+  <%= link_to "Entre com o Google", user_google_oauth2_omniauth_authorize_path(:google_oauth2) %>
+
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
@@ -7,6 +9,15 @@
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" }%>
+      <%= f.input :name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "name" }%>
+      <%= f.input :social_sec_no,
+                  label: "CPF",
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "cpf" }%>
       <%= f.input :password,
                   label: "Senha",
                   required: true,
@@ -19,8 +30,10 @@
       <%= f.input :birthdate,
                   label: "Data de nascimento",
                   as: :string,
-                  input_html: {type: :date},
-                  required: true %>
+                  placeholder: "dd/mm/yyyy",
+		              input_html: {type: :date},
+                  required: true,
+                  :order => [:day, :month, :year] %>
       <%= f.input :street_address,
                   label: "Endereço completo",
                   required: true,

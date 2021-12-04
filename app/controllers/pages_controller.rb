@@ -13,8 +13,4 @@ class PagesController < ApplicationController
       }
     end
   end
-
-  def search
-    pp params
-  end
 end

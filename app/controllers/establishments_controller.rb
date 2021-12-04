@@ -16,10 +16,7 @@ class EstablishmentsController < ApplicationController
       if parameters.select! { |_k, v| v }.blank?
         policy_scope(Establishment).where(business_status: "OPERATIONAL")
       else
-        policy_scope(Establishment).joins(:bathroom).where(
-          business_status: "OPERATIONAL",
-          bathroom: parameters
-        )
+        policy_scope(Establishment).joins(:bathroom).where(business_status: "OPERATIONAL", bathroom: parameters)
       end
     end
   end
