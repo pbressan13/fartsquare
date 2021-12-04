@@ -14,7 +14,11 @@ module Fartsquare
       generate.test_framework :test_unit, fixture: false
     end
     # Initialize configuration defaults for originally generated Rails version.
+    config.i18n.available_locales = %i[en 'pt-BR']
+    # config.i18n.default_locale = :'pt-BR'
+    config.encoding = "utf-8"
     config.load_defaults 6.1
+
 
     # Configuration for the application, engines, and railties goes here.
     #

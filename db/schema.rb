@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_29_000015) do
+ActiveRecord::Schema.define(version: 2021_12_03_004135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,20 @@ ActiveRecord::Schema.define(version: 2021_11_29_000015) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "uid"
+    t.string "avatar_url"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
   create_table "bathrooms", force: :cascade do |t|
@@ -86,11 +100,6 @@ ActiveRecord::Schema.define(version: 2021_11_29_000015) do
     t.string "role"
     t.string "street_address"
     t.date "birthdate"
-    t.integer "street_number"
-    t.string "zipcode"
-    t.string "street_addon"
-    t.string "neighborhood"
-    t.string "city"
     t.string "federal_unity"
     t.text "description"
     t.string "social_sec_no"
@@ -98,6 +107,8 @@ ActiveRecord::Schema.define(version: 2021_11_29_000015) do
     t.boolean "admin"
     t.float "latitude"
     t.float "longitude"
+    t.string "uid"
+    t.string "avatar_url"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

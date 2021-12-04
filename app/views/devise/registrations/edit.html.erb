@@ -25,6 +25,18 @@
                   hint: "precisamos da sua senha atual para confirmar suas alterações",
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
+      <%= f.input :name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "name" }%>
+      <%= f.input :street_address,
+                  label: "Endereço completo",
+                  required: true,
+                  input_html: { autocomplete: "address" }%>
+      <%= f.input :avatar,
+                  label: "Foto do perfil",
+                  as: :file,
+                  required: true %>
     </div>
 
     <div class="form-actions">
