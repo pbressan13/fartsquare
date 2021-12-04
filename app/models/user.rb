@@ -9,8 +9,6 @@ class User < ApplicationRecord
   after_validation :geocode # , if: :will_save_change_to_street_address?
   validates :name, :email, presence: true, allow_blank: false
   validates :email, format: { with: Devise.email_regexp }
-  #validates :street_address, length: { minimum: 6 }
-  # validates :federal_unity, length: { is: 2 }
 
   def self.from_omniauth(access_token)
     data = access_token.info

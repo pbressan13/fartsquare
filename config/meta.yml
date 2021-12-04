@@ -1,0 +1,5 @@
+meta_product_name: "FartSquare"
+meta_title: "FartSquare - Banheiros Premium"
+meta_description: "Faça o número 2 em qualquer lugar, como se estivesse em casa"
+meta_image: "toiler_paper.png" # should exist in `app/assets/images/`
+twitter_account: "@fartsquare"   # required for Twitter Cards
