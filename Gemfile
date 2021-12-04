@@ -38,9 +38,8 @@ gem 'faker'
 gem 'google_places', '~> 2.0'
 gem 'json', '~> 2.6', '>= 2.6.1'
 gem 'open-uri', '~> 0.2.0'
-gem 'sidekiq'
-gem 'sidekiq-failures', '~> 1.0'
-
+gem 'sidekiq', '~> 6.3', '>= 6.3.1'
+gem 'sidekiq-failures', '~> 1.0', '>= 1.0.1'
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
