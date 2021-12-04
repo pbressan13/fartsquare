@@ -90,6 +90,7 @@ GEM
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     csv (3.2.1)
+    date (3.2.2)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -153,6 +154,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.3)
       activesupport (>= 5.0.0)
+    json (2.6.1)
     jwt (2.3.0)
     listen (3.7.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -201,6 +203,10 @@ GEM
     omniauth-rails_csrf_protection (1.0.0)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
+    open-uri (0.2.0)
+      stringio
+      time
+      uri
     orm_adapter (0.5.0)
     parallel (1.21.0)
     parser (3.0.3.1)
@@ -318,8 +324,11 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    stringio (3.0.1)
     thor (1.1.0)
     tilt (2.0.10)
+    time (0.2.0)
+      date
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -329,6 +338,7 @@ GEM
       unf_ext
     unf_ext (0.0.8)
     unicode-display_width (2.1.0)
+    uri (0.11.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -373,11 +383,13 @@ DEPENDENCIES
   google_places (~> 2.0)
   htmlbeautifier
   jbuilder (~> 2.7)
+  json (~> 2.6, >= 2.6.1)
   listen (~> 3.3)
   msgpack
   omniauth
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
+  open-uri (~> 0.2.0)
   pg (~> 1.1)
   pry-byebug
   pry-rails

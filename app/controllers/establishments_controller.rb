@@ -1,6 +1,3 @@
-require 'json'
-require 'open-uri'
-
 class EstablishmentsController < ApplicationController
   before_action :find_establishment, only: %i[show edit update destroy]
 

@@ -36,6 +36,8 @@ gem 'elasticsearch', "< 7.14" # to use a supported version of the Elasticsearch 
 gem 'searchkick', '~> 4.0'
 gem 'faker'
 gem 'google_places', '~> 2.0'
+gem 'json', '~> 2.6', '>= 2.6.1'
+gem 'open-uri', '~> 0.2.0'
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
