@@ -27,8 +27,7 @@ class Establishment < ApplicationRecord
   def open?
     today_times = fetch_today_times
 
-    return false if today_times.blank?
-    return false if today_times.include?("Closed")
+    return false if today_times.blank? || today_times.include?("Closed")
     return true if today_times.include?("24 hours")
 
     today_times.gsub!('– 12:00 AM', '– 11:59 PM') if today_times.include?('– 12:00 AM')
