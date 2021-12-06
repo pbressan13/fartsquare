@@ -38,7 +38,11 @@
   </head>
 
   <body>
-    <%= tag :div, id: "current-user-coordinates", data: {long: current_user.longitude, lat: current_user.latitude } %>
+    <% if current_user %>
+      <%= tag :div, id: "current-user-coordinates", data: {long: current_user.longitude, lat: current_user.latitude } %>
+    <% else %>
+      <%= tag :div, id: "current-user-coordinates", data: {long: nil, lat: nil } %>
+    <% end %>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
@@ -47,3 +51,4 @@
     <% end %>
   </body>
 </html>
+<% console %>
