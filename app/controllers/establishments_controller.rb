@@ -69,11 +69,11 @@ class EstablishmentsController < ApplicationController
     params.require(:establishment).permit(
       :full_address, :street_number, :zipcode, :street_addon,
       :neighborhood, :city, :federal_unity, :establishment_name,
-      images: []
+      :latitude, :longitude, :trip_duration, images: []
     )
   end
 
-  def get_position(position)
-    @coordinates = position
-  end
+  # def get_position(position)
+  #   @coordinates = position
+  # end
 end

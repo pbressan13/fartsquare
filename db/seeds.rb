@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Bathroom.destroy_all
-# Establishment.destroy_all
+Bathroom.destroy_all
+Establishment.destroy_all
 # User.destroy_all
 
 Establishment.reindex
@@ -24,7 +24,7 @@ require_relative 'parse_coordinates_csv'
 
 file_path = 'db/SP_COORDINATES_SEED_ESTABLISHMENT.csv'
 
-coordinates = gather_coordinates(file_path, 3, false)
+coordinates = gather_coordinates(file_path, 8, false)
 
 @client = GooglePlaces::Client.new(ENV['PLACES_API'])
 
@@ -33,7 +33,7 @@ places = []
 coordinates.each do |coordinate|
   places << @client.spots(
     coordinate[:latitude], coordinate[:longitude],
-    types: %w[gas_station convenience_store restaurant],
+    types: %w[gas_station restaurant convenience_store],
     radius: 10_000,
     detail: true
   )
