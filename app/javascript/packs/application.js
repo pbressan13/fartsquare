@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { initMapbox } from '../plugins/init_mapbox';
+import { initUpdateNavbarOnScroll } from '../components/navbar';
 
 Rails.start()
 Turbolinks.start()
@@ -35,4 +36,5 @@ window.$ = window.jQuery = jQuery;
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
+  initUpdateNavbarOnScroll();
 })
