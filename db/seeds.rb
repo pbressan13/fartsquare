@@ -6,19 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Bathroom.destroy_all
-Establishment.destroy_all
+# Bathroom.destroy_all
+# Establishment.destroy_all
 # User.destroy_all
 
-#Establishment.reindex
+# Establishment.reindex
 
-# 25.times do
-#   User.create(
-#     email: Faker::Internet.email,
-#     password: Faker::Internet.password,
-#     name: Faker::Name.name
-#   )
-# end
+25.times do
+  User.create(
+    email: Faker::Internet.email,
+    password: Faker::Internet.password,
+    name: Faker::Name.name
+  )
+end
 
 require_relative 'parse_coordinates_csv'
 
