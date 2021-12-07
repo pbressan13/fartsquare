@@ -11,7 +11,7 @@
         <% else %>
           <%= image_tag(establishment.photo_link) %>
         <% end %>
-        <div class="card-establishment-right">
+        <div class="card-establishment-right d-flex align-items-start flex-column">
           <div class="card-establishment-right-name">
             <h2>
               <%= establishment.name.truncate(50) %>

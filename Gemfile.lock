@@ -144,7 +144,7 @@ GEM
     google_places (2.0.0)
       httparty (>= 0.13.1)
     hashie (5.0.0)
-    htmlbeautifier (1.4.0)
+    htmlbeautifier (1.4.1)
     http-accept (1.7.0)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
@@ -187,8 +187,6 @@ GEM
     netrc (0.11.0)
     nio4r (2.5.8)
     nokogiri (1.12.5-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.7)
       faraday (>= 0.8, < 2.0)
@@ -275,7 +273,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redis (4.5.1)
-    regexp_parser (2.1.1)
+    regexp_parser (2.2.0)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -379,7 +377,6 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
-  x86_64-linux
 
 DEPENDENCIES
   autoprefixer-rails (= 10.2.5)

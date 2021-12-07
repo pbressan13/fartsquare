@@ -23,8 +23,12 @@
 }
 
 .card-establishment-right-name {
-  margin: 0px 20px 5px;
   display: inline-block;
+}
+
+.card-establishment-right{
+  padding: 15px;
+  width: 100%;
 }
 
 .card-establishment-right h2 {
@@ -38,9 +42,8 @@
 
 .card-establishment-right ul {
   list-style-type: none;
-  padding: 0 0 0 0px;
-  margin: 5px 20px;
   display: inline-block;
+  padding-inline-start: 0px;
 }
 
 .card-establishment-right li {
@@ -49,13 +52,14 @@
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 12px;
-  padding: 0 4px 0 4px;
+  margin-right: 1rem;
 }
 
 .card-establishment-right-location {
   margin: 0px;
   color: white;
   opacity: 1;
+  height: 50px;
 }
 
 .card-establishment-right-location p {
@@ -64,7 +68,6 @@
   font-size: 12px;
   padding: 0 0px 0 0px;
   letter-spacing: 1px;
-  margin: 0px 10px 5px;
   display: inline-block;
   line-height: 20px;
 }
