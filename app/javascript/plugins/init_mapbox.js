@@ -8,6 +8,7 @@ const buildMap = (mapElement) => {
   return new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10',
+    center: [-77.04, 38.907],
   });
 };
 
