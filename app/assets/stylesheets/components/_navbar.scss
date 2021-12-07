@@ -1,12 +1,12 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: #5C2601;
+  background: #ffde59;
   color: #fafafa;
   z-index: 10000;
   position: fixed;
   top: 0px;
   width: 100%;
-  height: 60px;
+  height: 80px;
   transition: 0.5s background-color ease;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 30px;
+  width: 120px;
 }
 
 .navbar-lewagon-white {
@@ -25,11 +25,11 @@
 .nav-link {
   display: flex;
   align-items: center;
-  color: #FFE235;
+  color: #ffe235;
 }
 
 .nav-link a {
-  color: #FFE235;
+  color: #ffe235;
   opacity: 0.5;
   text-decoration: none;
   font-size: 20px;

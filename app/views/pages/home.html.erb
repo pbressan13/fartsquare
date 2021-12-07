@@ -1,10 +1,15 @@
-<div class="home-banner">
-  <h1>FartSquare</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path("banner.png") %>);">
+  <div class="container">
+    <h1>Faça o <strong>número 2</strong></h1>
+    <h1>como se estivesse em <strong>casa</strong>!</h1>
+    <a class="btn btn-ghost" href="#">Apply now</a>
+  </div>
 </div>
-
-<div id="outerdiv" class="mt-5">
-  <div id="map"
+<div class="container">
+  <div id="outerdiv" class="mt-1 mb-1">
+    <div id="map"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 </div>
