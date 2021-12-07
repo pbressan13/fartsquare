@@ -32,7 +32,7 @@ const addMarkersToMap = (map, markers) => {
         </p>
         <a
           href="https://waze.com/ul?directions?navigate=yes&to=ll.${marker.latitude}%2C${marker.longitude}&from=ll.${lat}%2C${long}"
-          class="btn-waze">
+          class="btn btn-secondary btn-sm">
           Dirigir até o local
         </a>
     `);
