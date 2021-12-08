@@ -7,7 +7,7 @@
     <% @establishments.each do |establishment| %>
       <div class="card-establishment">
         <% if establishment.photo_link.blank? %>
-          <%= image_tag("SERVICO_SEM_FOTO.png") %>
+          <%= image_tag("SERVICO_SEM_FOTO.svg") %>
         <% else %>
           <%= image_tag(establishment.photo_link) %>
         <% end %>
@@ -63,7 +63,9 @@
               <br/>
               <i class="fas fa-stopwatch" title="Duração estimada da viagem"></i>
               <% if establishment.trip_duration < 24*60*60 %>
-                <%= Time.at(establishment.trip_duration).utc.strftime("%H:%M") %>
+                <% hour = Time.at(establishment.trip_duration).utc.strftime("%H")
+                  minute = Time.at(establishment.trip_duration).utc.strftime("%M") %>
+                  <%= "#{hour} h #{minute} m" %>
               <% else %>
                 ---
               <% end %>

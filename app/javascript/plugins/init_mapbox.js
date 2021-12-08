@@ -8,7 +8,8 @@ const buildMap = (mapElement) => {
   return new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10',
-    center: [-77.04, 38.907],
+    center: [-46.9165386,-23.1962926],
+    zoom: 12.5
   });
 };
 
@@ -31,7 +32,7 @@ const addMarkersToMap = (map, markers) => {
           </img>
         </p>
         <a
-          href="https://waze.com/ul?directions?navigate=yes&to=ll.${marker.latitude}%2C${marker.longitude}&from=ll.${lat}%2C${long}"
+        href="https://waze.com/ul?directions?navigate=yes&to=ll.${marker.latitude}%2C${marker.longitude}&from=ll.${lat}%2C${long}"
           class="btn btn-secondary btn-sm">
           Dirigir até o local
         </a>
@@ -62,7 +63,10 @@ const geolocate = new mapboxgl.GeolocateControl({
   positionOptions: {
     enableHighAccuracy: true
   },
-  trackUserLocation: true
+  trackUserLocation: true,
+  fitBoundsOptions: {
+    zoom: 12,
+  }
 });
 
 const initMapbox = () => {

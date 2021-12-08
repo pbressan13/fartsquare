@@ -28,6 +28,21 @@
   color: #fff ;
 }
 
+.btn-ghost-yellow {
+  color: #fff;
+  background-color: #4e1f00;
+  border: 1px solid #5C2601;
+  padding: 8px 24px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background 0.3s ease
+}
+
+.btn-ghost-yellow:hover {
+  background-color: #ffda00;
+  color: #4e1f00 ;
+}
+
 .btn-panic {
   color: #fff;
   background-color: red;
