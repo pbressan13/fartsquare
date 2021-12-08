@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   end
 
   def populate_db
-    UpdateEstablishmentJob.perform_async(current_user.id)
+    UpdateEstablishmentJob.perform_async(current_user.id) if current_user
   end
 
   def fetch_position
