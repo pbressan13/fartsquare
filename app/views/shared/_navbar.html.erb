@@ -18,7 +18,7 @@
             <% if current_user.name %>
               <p class="dropdown-item" > Olá, <strong> <%= current_user.name.capitalize.split.first %> </strong></p>
             <% else %>
-              <p class="dropdown-item" > Olá, <strong> cagão sem nome! </strong></p>
+              <p class="dropdown-item" > Olá, <strong> cagão anônimo! </strong></p>
             <% end %>
             <%= link_to "Editar meus dados", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
