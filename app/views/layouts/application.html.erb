@@ -9,7 +9,6 @@
     <meta property="og:image" content="<%= meta_image %>" />
     <meta property="og:description" content="<%= meta_description %>" />
     <meta property="og:site_name" content="<%= meta_title %>" />
-
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
@@ -19,22 +18,19 @@
     <meta name="twitter:image:src" content="<%= meta_image %>">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="<%= meta_description %>">
-
     <!-- Mobile App -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
     <%= render 'shared/ios_pwa_links' %>
     <%= render 'shared/android_pwa_links' %>
-
     <%= stylesheet_pack_tag 'application' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= favicon_link_tag 'poop.png' %>
+    <%= favicon_link_tag 'logo-mini2.png' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" />
-
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <style>
       .flash__alert   { color: red; }
@@ -43,7 +39,6 @@
     </style>
     <script src="//cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/js/emojify.min.js"></script>
   </head>
-
   <body>
     <% if current_user %>
       <%= tag :div, id: "current-user-coordinates", data: {long: current_user.longitude, lat: current_user.latitude } %>
