@@ -20,7 +20,7 @@ class PagesController < ApplicationController
   end
 
   def fetch_position
-    if current_user?
+    if current_user
       current_user.longitude = params[:data_coordinates].first.to_f
       current_user.latitude = params[:data_coordinates].second.to_f
       current_user.save!
