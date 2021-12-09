@@ -1,21 +1,16 @@
-<%= current_user.email %>
-
 <%= simple_form_for [establishment] do |f| %>
-    <%= f.input :zipcode, label: "CEP" %>
-    <%= f.input :full_address,  label: "Logradouro" %>
-    <%= f.input :street_number,  label: "Número do Logradouro" %>
-    <%= f.input :street_addon,  label: "Complemento" %>
-    <%= f.input :neighborhood,  label: "Bairro" %>
-    <%= f.input :city,  label: "Cidade" %>
-    <%= f.input :federal_unity,
+  <%= f.input :name, label: "Nome do Estabelecimento" %>
+  <%= f.input :full_address,  label: "Logradouro" %>
+  <%= f.input :city,  label: "Cidade" %>
+  <%= f.input :federal_unity,
                 label: "UF",
                 :collection => %w[AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO],
                 value_method: :strip %>
-    <%= f.input :establishment_name, label: "Nome do Estabelecimento" %>
-    <%= f.input :images, as: :file, :input_html => { :multiple => true }, label: "Fotos do seu estabelecimento:" %>
-    <div class="row">
-      <%= f.submit "Confirmar", class: "btn btn-primary" %>
-      <%= link_to 'Voltar', establishments_path, class: "btn btn-primary mx-2" %>
-    </div>
-
+  <%= f.input :phone_number,  label: "Número do Telefone" %>
+  <%= f.input :types, as: :radio_buttons, collection: [['0', 'gas_station'], ['1', 'restaurant'], ['2', 'convenience_store']], label_method: :second, value_method: :first %>
+  <%= f.input :images, as: :file, :input_html => { :multiple => true }, label: "Fotos do seu estabelecimento:" %>
+  <div class="row">
+    <%= f.submit "Confirmar", class: "btn btn-primary" %>
+    <%= link_to 'Voltar', establishments_path, class: "btn btn-primary mx-2" %>
+  </div>
 <% end %>

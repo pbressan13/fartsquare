@@ -32,6 +32,7 @@ class EstablishmentsController < ApplicationController
 
   def create
     @establishment = Establishment.new(establishment_params)
+    @establishment.business_status = "OPERATIONAL"
     @establishment.user = current_user
     if @establishment.save
       redirect_to establishment_path(@establishment)
@@ -68,7 +69,7 @@ class EstablishmentsController < ApplicationController
 
   def establishment_params
     params.require(:establishment).permit(
-      :full_address, :street_number, :zipcode, :street_addon,
+      :full_address, :name, :street_number, :zipcode, :street_addon,
       :neighborhood, :city, :federal_unity, :establishment_name,
       :latitude, :longitude, :trip_duration, images: []
     )

@@ -5,8 +5,8 @@ class Establishment < ApplicationRecord
   serialize :availability
   searchkick
   serialize :types
-  geocoded_by :street_address
-  # after_validation :geocode, if: :will_save_change_to_address?
+  geocoded_by :full_address
+  after_validation :geocode
 
   validates :name, presence: true
 
