@@ -62,20 +62,22 @@
               <%= establishment.city %>/<%= establishment.federal_unity %>
               <br/>
               <i class="fas fa-stopwatch" title="Duração estimada da viagem"></i>
-              <% if establishment.trip_duration < 24*60*60 %>
-                <% hour = Time.at(establishment.trip_duration).utc.strftime("%H")
-                  minute = Time.at(establishment.trip_duration).utc.strftime("%M") %>
+              <% if establishment.trip_duration %>
+                <% if establishment.trip_duration < 24*60*60 %>
+                  <% hour = Time.at(establishment.trip_duration).utc.strftime("%H")
+                    minute = Time.at(establishment.trip_duration).utc.strftime("%M") %>
                   <%= "#{hour} h #{minute} m" %>
-              <% else %>
-                ---
+                <% else %>
+                  ---
+                <% end %>
               <% end %>
-            <p>
+              <p>
+              </div>
+              <div class="card-establishment-right-button mt-3">
+                <%= link_to 'Dirigir até o local', "https://waze.com/ul?directions?navigate=yes&to=ll.#{establishment.latitude}%2C#{establishment.longitude}&from=ll.#{current_user.latitude}%2C#{current_user.longitude}" %>
+              </div>
+            </div>
           </div>
-          <div class="card-establishment-right-button mt-3">
-            <%= link_to 'Dirigir até o local', "https://waze.com/ul?directions?navigate=yes&to=ll.#{establishment.latitude}%2C#{establishment.longitude}&from=ll.#{current_user.latitude}%2C#{current_user.longitude}" %>
-          </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-</div>
+    </div>
