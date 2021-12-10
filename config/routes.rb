@@ -3,6 +3,7 @@ require "sidekiq/web"
 Rails.application.routes.draw do
   get 'map' => "establishments#map"
   resources :establishments
+  resources :bathrooms
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   root to: 'pages#home'
   get 'pages/search', to: 'pages#search'

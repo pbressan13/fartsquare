@@ -5,8 +5,8 @@ class Establishment < ApplicationRecord
   serialize :availability
   searchkick
   serialize :types
-  geocoded_by :street_address
-  # after_validation :geocode, if: :will_save_change_to_address?
+  geocoded_by :full_address
+  after_validation :geocode
 
   validates :name, presence: true
 
@@ -60,5 +60,9 @@ class Establishment < ApplicationRecord
     types.each do |type|
       return true if type.include?('gas_station')
     end
+  end
+
+  def address
+    [street, city, state, country].compact.join(', ')
   end
 end

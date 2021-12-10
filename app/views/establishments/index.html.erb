@@ -7,7 +7,11 @@
     <% @establishments.each do |establishment| %>
       <div class="card-establishment">
         <% if establishment.photo_link.blank? %>
-          <%= image_tag("SERVICO_SEM_FOTO.svg") %>
+          <% if establishment.images.first  %>
+            <%= image_tag establishment.images.first %>
+          <% else %>
+            <%= image_tag("SERVICO_SEM_FOTO.svg") %>
+          <% end %>
         <% else %>
           <%= image_tag(establishment.photo_link) %>
         <% end %>
