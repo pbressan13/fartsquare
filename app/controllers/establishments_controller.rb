@@ -20,9 +20,12 @@ class EstablishmentsController < ApplicationController
 
   def index
     @establishments = filtered_establishments
-
     @establishments = @establishments.sort_by { |establishment| establishment.available_now ? 0 : 1 }
     @establishments = @establishments.sort_by(&:trip_duration)
+  end
+
+  def search
+    @establishments = Establishment.search(params[:query])
   end
 
   def new
