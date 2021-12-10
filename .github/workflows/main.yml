@@ -40,7 +40,7 @@ jobs:
         with:
           ruby-version: 2.7.3
           # runs 'bundle install' and caches installed gems automatically
-          bundler-cache: true
+          bundler-cache: false
       - name: Set up Node
         uses: actions/setup-node@v2
         with:
