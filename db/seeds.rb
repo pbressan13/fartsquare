@@ -25,6 +25,8 @@ require_relative 'parse_coordinates_csv'
 file_path = 'db/SP_COORDINATES_SEED_ESTABLISHMENT.csv'
 
 coordinates = gather_coordinates(file_path, 8, false)
+puts coordinates
+
 
 @client = GooglePlaces::Client.new(ENV['PLACES_API'])
 
@@ -129,6 +131,8 @@ places.count.times do |i|
   )
   establishment.bathroom = bathroom
   bathroom.establishment = establishment
+
+  p establishment
 
   establishment.save!
   bathroom.save!
