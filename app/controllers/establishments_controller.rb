@@ -27,13 +27,22 @@ class EstablishmentsController < ApplicationController
 
   def new
     @establishment = Establishment.new
+    @bathroom = Bathroom.new
     authorize @establishment
   end
 
   def create
     @establishment = Establishment.new(establishment_params)
+    @bathroom = Bathroom.new(
+      tomada: params[:establishment][:bathroom][:tomada] == "1",
+      papel_premium: params[:establishment][:bathroom][:papel_premium] == "1",
+      chuveirinho: params[:establishment][:bathroom][:chuveirinho] == "1",
+      internet: params[:establishment][:bathroom][:internet] == "1"
+    )
+    @bathroom.establishment = @establishment
     @establishment.business_status = "OPERATIONAL"
     @establishment.user = current_user
+    # raise
     if @establishment.save
       redirect_to establishment_path(@establishment)
     else
@@ -71,7 +80,11 @@ class EstablishmentsController < ApplicationController
     params.require(:establishment).permit(
       :full_address, :name, :street_number, :zipcode, :street_addon,
       :neighborhood, :city, :federal_unity, :establishment_name,
-      :latitude, :longitude, :trip_duration, images: []
+      :latitude, :longitude, :trip_duration, images: [], types: []
     )
+  end
+
+  def bathroom_params
+    params[:establishment][:bathroom]
   end
 end

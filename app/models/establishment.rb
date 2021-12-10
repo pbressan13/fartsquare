@@ -61,4 +61,8 @@ class Establishment < ApplicationRecord
       return true if type.include?('gas_station')
     end
   end
+
+  def address
+    [street, city, state, country].compact.join(', ')
+  end
 end

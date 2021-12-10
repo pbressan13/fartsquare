@@ -1,4 +1,4 @@
-<%= simple_form_for [establishment] do |f| %>
+<%= simple_form_for [establishment ] do |f| %>
   <%= f.input :name, label: "Nome do Estabelecimento" %>
   <%= f.input :full_address,  label: "Logradouro" %>
   <%= f.input :city,  label: "Cidade" %>
@@ -7,10 +7,20 @@
                 :collection => %w[AC AL AM AP BA CE DF ES GO MA MG MS MT PA PB PE PI PR RJ RN RO RR RS SC SE SP TO],
                 value_method: :strip %>
   <%= f.input :phone_number,  label: "Número do Telefone" %>
-  <%= f.input :types, as: :radio_buttons, collection: [['0', 'gas_station'], ['1', 'restaurant'], ['2', 'convenience_store']], label_method: :second, value_method: :first %>
+  <%= f.input :types,
+    :label => "Tipo de Estabelecimento",
+    collection: ["gas_station","restaurant", "convenience_store", "other"],
+    include_blank: false,
+    wrapper_html: { class: 'form-group', id: 'text-dark' },
+    as: :check_boxes,
+    include_hidden: false,
+    :input_html => { :multiple => true} %>
   <%= f.input :images, as: :file, :input_html => { :multiple => true }, label: "Fotos do seu estabelecimento:" %>
-  <div class="row">
-    <%= f.submit "Confirmar", class: "btn btn-primary" %>
-    <%= link_to 'Voltar', establishments_path, class: "btn btn-primary mx-2" %>
+  <%= f.fields_for :bathroom do |builder| %>
+    <%= render "bathroom_fields", :f => builder %>
+  <% end %>
+  <div class="row mt-3 ml-1">
+    <%= f.submit "Confirmar", class: "btn btn-ghost-yellow mr-3" %>
+    <%= link_to 'Voltar', establishments_path, class: "btn btn-ghost-yellow" %>
   </div>
 <% end %>
